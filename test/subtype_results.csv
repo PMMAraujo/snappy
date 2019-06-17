@@ -1,0 +1,4 @@
+,id,recomb_result,node_all_refs,s_node_all_refs,node_pure_refs,s_node_pure_refs,node_recomb_refs,s_node_recomb_refs,closser_ref
+0,test01,B,B,0.689,B,0.093,90_BF1,0.998,B
+1,test02,B,B,0.689,B,0.093,90_BF1,0.998,B
+2,test03,C,C,0.956,C,0.999,87_cpx,,C

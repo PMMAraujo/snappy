@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SNAPPy commands &#8212; snappy-docs 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="Tutorials" href="tutorials.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="snappy-commands">
+<span id="usage"></span><h1>SNAPPy commands<a class="headerlink" href="#snappy-commands" title="Permalink to this headline">¶</a></h1>
+<p>This is a list of the implemented functionalities in SNAPPy:</p>
+<ul>
+<li><p>Basic subtyping:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">subtype_all</span>
+</pre></div>
+</div>
+</li>
+<li><p>Subtyping using n cpu cores:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">subtype_all</span> <span class="o">--</span><span class="n">cores</span> <span class="n">n</span>
+</pre></div>
+</div>
+</li>
+<li><p>Basic alignment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">align_all</span>
+</pre></div>
+</div>
+</li>
+<li><p>Alignment using n cpu cores:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">align_all</span> <span class="o">--</span><span class="n">cores</span> <span class="n">n</span>
+</pre></div>
+</div>
+</li>
+<li><p>Clean the SNAPPy folder from previous runs outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">delete_all_outputs</span>
+</pre></div>
+</div>
+</li>
+<li><p>Clean the SNAPPy folder from previous runs intermediate files (but not outputs):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">delete_interm_files</span>
+</pre></div>
+</div>
+</li>
+<li><p>Compress to a file and clean the SNAPPy folder from previous runs intermediate files (but not outputs):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">compress_and_del_inter_files</span>
+</pre></div>
+</div>
+</li>
+<li><p>Compress everything inside the SNAPPy folder to a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">compress_all</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Note: Please note that SNAPPy is built on top of <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/index.html">Snakemake</a>, and therefore should retain all the functionalities of this pipeline software.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">snappy-docs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SNAPPy commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_it_works.html">How it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tutorials.html" title="previous chapter">Tutorials</a></li>
+      <li>Next: <a href="faq.html" title="next chapter">FAQ</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Pedro Araujo.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

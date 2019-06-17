@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Installation &#8212; snappy-docs 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="prev" title="Welcome to snappy’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>This pipeline was build upon many dependencies and <a class="reference external" href="http://www.python.org/">Python</a> code. Therefore there was the need to use a package/environment manager. For this task we highly recommend <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a> . The following installation instructions assume the user wants to install and use <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a>. If you already have any recent conda distribution on your system do not use the <a class="reference internal" href="#quick-install-guide">Quick install Guide</a>, as it is it will install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>. If you do not which to use <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a> please look at all the dependencies needed to use SNAPPy in the ‘environment.yaml’ LINK file.</p>
+<blockquote>
+<div></div></blockquote>
+<div class="section" id="quick-install-guide">
+<span id="quick"></span><h2>Quick install Guide<a class="headerlink" href="#quick-install-guide" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Download SNAPPy from LINK and put it in a desired location</p></li>
+<li><p>Open a terminal and move to the downloaded folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">snappy</span>
+</pre></div>
+</div>
+</li>
+<li><p>Give permission to the snappy installation script to run, and run it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">snappy_installer_x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">snappy_installer_x86_64</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This task is time consuming and may take several minutes.</p>
+<ol class="arabic" start="4">
+<li><dl class="simple">
+<dt>After the SNAPPy’s dependencies installation a series of tests will be executed using <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>. Please ensure no errors occur.</dt><dd><ol class="loweralpha simple">
+<li><p>If there was any errors clean the downloaded folder and start from step 1. If the problem persist please try to follow the <a class="reference internal" href="#install-point-by-point">Install point-by-point</a>. If you are still unable to install SNAPPy after this contact us to EMAIL.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>SNAPPy is now ready to use! When you want to use SNAPPy open a new terminal inside SNAPPy’s folder and activate the conda environment by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">snappy</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>For a quick start on SNAPPy’s usage look at the <a class="reference internal" href="tutorials.html#tutorials"><span class="std std-ref">Tutorials</span></a> section.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="install-point-by-point">
+<span id="point-by-point"></span><h2>Install point-by-point<a class="headerlink" href="#install-point-by-point" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Open a terminal, download Miniconda3 version 4.6.14 and install it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wget https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh -O ./miniconda.sh
+bash ./miniconda.sh -b -p $HOME/miniconda
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This task may take several minutes.</p>
+<ol class="arabic" start="2">
+<li><p>Download SNAPPy from LINK and put it in a desired location</p></li>
+<li><p>Move to the downloaded folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">snappy</span>
+</pre></div>
+</div>
+</li>
+<li><p>Activate conda and add it tho the bashrc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$HOME/miniconda/bin:$PATH&quot;</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"># added by SNAPPy to run miniconda&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
+<span class="n">MISSING</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Note: It is not actually needed to add conda path to the bashrc but it makes it easier to use.</p>
+<ol class="arabic" start="5">
+<li><p>Create SNAPPy’s conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span><span class="o">-</span><span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the tests to ensure the installation was successful. Please ensure no errors occur:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span><span class="o">.</span><span class="n">test</span>
+</pre></div>
+</div>
+</li>
+<li><p>SNAPPy is now ready to use! When you want to use SNAPPy open a new terminal inside SNAPPy’s folder and activate the conda by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">snappy</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>For a quick start on SNAPPy’s usage look at the <a class="reference internal" href="tutorials.html#tutorials"><span class="std std-ref">Tutorials</span></a> section.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">snappy-docs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-install-guide">Quick install Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-point-by-point">Install point-by-point</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">SNAPPy commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_it_works.html">How it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to snappy’s documentation!</a></li>
+      <li>Next: <a href="tutorials.html" title="next chapter">Tutorials</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Pedro Araujo.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

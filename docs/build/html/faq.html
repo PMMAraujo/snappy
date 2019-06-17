@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>FAQ &#8212; snappy-docs 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How it works" href="how_it_works.html" />
+    <link rel="prev" title="SNAPPy commands" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="faq">
+<span id="id1"></span><h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<p><strong>Q: “Why should I use SNAPPy?</strong></p>
+<p>A: Do you want to do HIV-1 subtyping/alignment in large numbers? Do you have to process your HIV-1 sequences locally because ethic concerns or data privacy policy? Do you want  a tool for HIV-1 subtyping/alignment that scales with the amount or computational resources you have? Do you want a tool that gives simple outputs but also allows you to dive deep in intermediate files and how the decisions were made? If you answered was yes to any or all or the previous questions SNAPPy is a tool for you.</p>
+<p><strong>Q: “Can SNAPPy run on a windows machine?</strong></p>
+<p>A: In theory it is possible to run SNAPPy on a windows machine using the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows Subsystem for Linux</a> , however at the moment we do not provide any support for this and if you decide to do so do it at your own risk. The main reason SNAPPy was build for Linux based systems is that is has dependencies that only work on these operating systems. We are considering options to make SNAPPy operative systems agnostic in future releases.</p>
+<p><strong>Q: “Is there any graphical user interface to use SNAPPy?</strong></p>
+<p>A: Currently, SNAPPy is a command base tool. However, we are trying to implement more user friendly ways to use SNAPPy without losing functionality.</p>
+<p><strong>Q: “Why using BLAST in SNAPPy?</strong></p>
+<p>A: We decided to use BLAST for the first version of SNAPPy because it is reliable, extensively tested and easy to implement. We are aware of more “modern” BLAST-like tools, but one needs to recognize that BLAST has decades of being “battle tested”. This decision does not restrict the usage of other tools/software in future versions of SNAPPy.</p>
+<p><strong>Q: “Why using FastTree in SNAPPy?</strong></p>
+<p>A: After testing several phylogenetic tools we acknowledged that FasTree had the best ratio between phylogenetic inference quality and computational time. Moreover, FastTree has all the characteristics needed for the  phylogenetic inference software for this version of SNAPPy. This decision does not restrict the usage of other tools/software in future versions of SNAPPy.</p>
+<p><strong>Q: “I used SNAPPy to subtype 100k sequences and the outputs are occupying a lot of disk space (several dozens gigabytes), is it normal?</strong></p>
+<p>A: Please keep in mind that SNAPPy is a complex pipeline and performs several analysis. Each of those generates outputs. Everything is multiplied by the number of inputs, even if each input occupies an almost negligible amount of disk space the sum of all of them will result in a large value. At the end of each run SNAPPy automatically deletes  an hidden folder created by Snakemake named ‘.snakemake’, this folder is extremely large and its deletion will save some space ( do not delete if the pipeline is still being executed).</p>
+<p><strong>Q: “Why can I not put several FASTA files inside the input folder?</strong></p>
+<p>A: This was a development decision. This may change in the future but for the current SNAPPy version we believe thats the best option for both the user and the pipeline.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">snappy-docs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">SNAPPy commands</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_it_works.html">How it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">SNAPPy commands</a></li>
+      <li>Next: <a href="how_it_works.html" title="next chapter">How it works</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Pedro Araujo.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/faq.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
