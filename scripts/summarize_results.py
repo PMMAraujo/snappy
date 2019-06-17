@@ -284,11 +284,18 @@ if __name__ == '__main__':
     my_res.reset_index(inplace=True)
     df_report.reset_index(inplace=True)
 
-    df_report['rule'] = my_res['rule']  
-    df_report.columns = ['id', 'name', 'recomb_result', 'node_all_refs', 's_node_all_refs',
-                      'node_pure_refs', 's_node_pure_refs', 'node_recomb_refs',
-                      's_node_recomb_refs', 'closser_ref', 'rule']
-    df_report.to_csv('report_subtype_results.csv', index=None)
+    df_report['rule'] = my_res['rule']
+    df_report['result'] = my_res['my_result']
+
+    df_report.columns = ['id', 'name', 'recomb_result', 'node_all_refs',
+                         's_node_all_refs', 'node_pure_refs', 's_node_pure_refs',
+                         'node_recomb_refs', 's_node_recomb_refs', 'closser_ref',
+                         'rule', 'result']
+
+    df_report[['id', 'name', 'result', 'recomb_result', 'node_all_refs',
+              's_node_all_refs', 'node_pure_refs', 's_node_pure_refs',
+              'node_recomb_refs', 's_node_recomb_refs', 'closser_ref',
+              'rule']].to_csv('report_subtype_results.csv', index=None)
 
     my_res['id'] = df_report['id']
     my_res.columns = ['name', 'rule', 'result', 'id']
