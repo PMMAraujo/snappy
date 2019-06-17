@@ -4,7 +4,7 @@ from Bio import SeqIO
 import pandas as pd
 import numpy as np
 
-ALL_REFS = [[x.id] + list(str(x.seq)) for x in SeqIO.parse(f'data/edited_new_all_refs.fasta', 'fasta')]
+ALL_REFS = [[x.id] + list(str(x.seq)) for x in SeqIO.parse(f'data/all_refs.fasta', 'fasta')]
 OUT_CPZ = [[x.id] + list(str(x.seq)) for x in SeqIO.parse(f'data/out_cpz.fasta', 'fasta')][0]
 
 def blast_closser(file_name, NAME):
@@ -12,7 +12,7 @@ def blast_closser(file_name, NAME):
     out_nogap = open('blast/nogap_{0}.fasta'.format(NAME), "w")
     subprocess.call(['sed', '-e', 's/-//g', '{0}'.format(file_name)], stdout=out_nogap)
 
-    subprocess.call(['blastn', '-db', 'data/all_refs_db', '-query',
+    subprocess.call(['blastn', '-db', 'data/db_all_refs', '-query',
     'blast/nogap_{0}.fasta'.format(NAME), '-out', 'blast/blast_{0}.txt'.format(NAME),
     '-word_size', '10', '-outfmt', '10', '-evalue', '1.e-10'])
 

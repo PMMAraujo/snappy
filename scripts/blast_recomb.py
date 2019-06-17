@@ -39,7 +39,7 @@ def do_blast_window(target, NAME):
         with open(f'blast/recblast_{NAME}.txt', 'w') as out_subs:
             out_subs.write('impossible to test recomb (lenght < 400bp)\n')
     else:
-        subprocess.call(['blastn', '-db', './data/db_01-02_pures', '-query',
+        subprocess.call(['blastn', '-db', './data/db_01-02_and_pures', '-query',
         '{0}'.format(to_blast), '-out', 'blast/recblast_{0}.txt'.format(NAME),
         '-word_size', '10', '-outfmt', '10', '-evalue', '1.e-100'])
 
