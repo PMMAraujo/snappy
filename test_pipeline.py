@@ -192,7 +192,14 @@ def get_clossest_blast():
     with open('test/subtype_results.csv') as expected_output:
         e_out = expected_output.read() 
 
-    assert out == e_out
+    with open('report_subtype_results.csv') as this_output:
+        rout = this_output.read()
+    
+    with open('test/report_subtype_results.csv') as expected_output:
+        e_rout = expected_output.read() 
+
+
+    assert (out == e_out) & (rout == e_rout)
 
 # Test cleaner all
 ## Tests
