@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'snappy'
+project = 'SNAPPy-HIV1-Subtyping'
 copyright = '2019, Pedro Araujo'
 author = 'Pedro Araujo'
 
