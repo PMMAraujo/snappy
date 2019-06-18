@@ -8,7 +8,34 @@ ALL_REFS = [[x.id] + list(str(x.seq)) for x in SeqIO.parse(f'data/all_refs.fasta
 OUT_CPZ = [[x.id] + list(str(x.seq)) for x in SeqIO.parse(f'data/out_cpz.fasta', 'fasta')][0]
 
 def blast_closser(file_name, NAME):
+    """BLAST to find closser reference
 
+    From a single fasta file a version of it withot any gaps ('-') is created
+    and written to the folder 'blast' as 
+    'nogap_{id_of_the_fasta_sequence}.fasta'.
+    Then that no gap sequence is used as anm input in a BLAST agaibnt the
+    database 'data/db_all_refs'.
+    Three group of reference sequences are created, those will be used fot three
+    diferent phylogenetic analysis. One contains the first 48 BLAST results,
+    the 'pures' contains the first 48 results excluding circulating recombinat
+    forms (CRFs), and the 'recomb' contains the first 48 results for only CRFs.
+
+    This function calls MAFFT to performe a sequence alignment between the
+    HIV-1 reference sequence (NCBI id: HXB2) and a sequence in a given file
+    'msa'. The alignment method does not allow any gaps the reference sequence.
+    After the alignment is performed the given sequence in 'msa' will be trimed
+    to only contain the genomic region specified by the user in 'gr'. The
+    resulting file is them wirtten to the folder 'aligned' with the following
+    notation: aligned_{id_of_the_fasta_sequence}.fasta. This function is called
+    by the function 'build_msas'.
+
+	Args:
+        file_name (fasta): Fasta file containing 1 fasta sequence aligned.
+        NAME (str): Global variable. Internal index of SNAPPy for this fasta.
+
+	Returns:
+        List of lists of reference sequences names.
+	"""
     out_nogap = open('blast/nogap_{0}.fasta'.format(NAME), "w")
     subprocess.call(['sed', '-e', 's/-//g', '{0}'.format(file_name)], stdout=out_nogap)
 
@@ -36,6 +63,20 @@ def blast_closser(file_name, NAME):
         
 
 def build_msas(file_name, NAME):
+    """Creating the MSA for phylogenetic inference
+
+    This is just a wraper function on top of the function 'specify_type_msas'
+    to execute it three times.
+    This function calls the functions 'blast_closser' and 'specify_type_msas' 
+    and is called by the function 'tree_maker'.
+
+	Args:
+        file_name (fasta): Fasta file containing 1 fasta sequence aligned.
+        NAME (str): Global variable. Internal index of SNAPPy for this fasta.
+
+	Returns:
+        This function does not return
+	"""
     closser_data = blast_closser(file_name, NAME)
     target = [np.array([x.id] + list(str(x.seq))) for x in SeqIO.parse(f'{file_name}', 'fasta')][0]
     mask_gaps = target != '-'
@@ -46,6 +87,29 @@ def build_msas(file_name, NAME):
 
 
 def specify_type_msas(col, name, target, mask_gaps, closser_data, NAME):
+    """Creating the MSA for phylogenetic inference
+
+
+    This writtes msa files. From the BLAST output it infers the best result
+    (bitscore), geting all references with that score. Then the positions with
+    gaps present in the target sequence are deleted in the outgroup sequence
+    ('OUT_CPZ') and the remaining closser referenecs. Finaly the msa file is
+    written to the folder 'trees' with the following notation:
+    msa_{type}_{id_of_the_fasta_sequence}.fasta. Type can take the any string
+    but only 'all, 'pure', and 'recomb' are used.
+
+	Args:
+        col (int): Number of the column where the list of selected referes is.
+        name (str): Can take the any string but only 'all, 'pure', and 'recomb'
+        are used.
+        target (np.array): Target fasta in an array.
+        mask_gaps (Bolean): Locations in the target sequence with gaps.
+        closser_data (list): Output from the blast_closser function.
+        NAME (str): Global variable. Internal index of SNAPPy for this fasta.
+
+	Returns:
+        This function does not return
+	"""
     msa_idx = closser_data[col]
     closser_seqs = np.array([x for x in ALL_REFS if x[0] in msa_idx])
 
@@ -61,6 +125,23 @@ def specify_type_msas(col, name, target, mask_gaps, closser_data, NAME):
         out_fasta.write(f'>{masked_root[0]}\n{"".join(masked_root[1:])}\n')
 
 def tree_maker(file_name, NAME):
+    """Phylogenetic inference
+
+
+    This function uses the multiple sequence alignments created by the function 
+    'build_msas' using the function 'specify_type_msas'.
+    Three trees are created per sequence 'id' (file_name). The trees are
+    outputed to the folder 'trees' with the following notation:
+    {type}_{id_of_the_fasta_sequence}.nwk. Type can take the any string
+    but only 'all, 'pure', and 'recomb' are used.
+
+	Args:
+        file_name (str): Name of the input fasta file.
+        NAME (str): Global variable. Internal index of SNAPPy for this fasta.
+
+	Returns:
+        This function does not return
+	"""
     build_msas(file_name, NAME)
 
     out_all = open("trees/all_{0}.nwk".format(NAME), "w")

@@ -9,15 +9,15 @@ REGIONS = {'GAG':[789, 2292], 'PR':[2252, 2550],
 		   'GAG-POL-ENV':[789, 2292, 2252, 5096, 6224, 8795] }
 
 def align_and_map(msa, out, gr):
-    """Align and Map.
+    """Align and Map
 
     This function calls MAFFT to performe a sequence alignment between the
     HIV-1 reference sequence (NCBI id: HXB2) and a sequence in a given file
     'msa'. The alignment method does not allow any gaps the reference sequence.
     After the alignment is performed the given sequence in 'msa' will be trimed
     to only contain the genomic region specified by the user in 'gr'. The
-    resulting filke is them wirtte to the folder 'aligned' with the following
-    notation: aligned_{name_of_the_fasta_sequence}.fasta.
+    resulting file is them wirtten to the folder 'aligned' with the following
+    notation: aligned_{id_of_the_fasta_sequence}.fasta.
 
 	Args:
         msa (fasta): Fasta file containing 1 fasta sequence to align.

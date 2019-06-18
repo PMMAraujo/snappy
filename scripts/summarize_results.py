@@ -4,6 +4,21 @@ from collections import Counter
 from Bio import Phylo
 
 def process_blast_recomb(name):
+    """Extract results from sliding window BLAST
+
+    This function parses the results from the slidding window BLAST
+    ('recblast_{id_of_the_fasta_sequence}.txt'), filters the top results,
+    divide the results by bins (of 50 nucleotides), and outputs the majority
+    rule result for r«each been. Finaly an output for the given seqeunce is
+    returned, if there is multiple results they are separated by '/'.
+
+
+	Args:
+        name (txt): Sliding window BLAST result.
+
+	Returns:
+        List with two items: name and processed result.
+	"""
     name_out = name[:-4].replace('blast/recblast_', '')
 
     try:
@@ -54,6 +69,20 @@ def process_blast_recomb(name):
 
 
 def process_trees(tree):
+    """Extract results from the phylogenetic inference
+
+    This function parses the results from the phylogenetic trees created, roots
+    the trees on the outgrouop ('CONSENSUS_CPZ'), and evaluated if the target
+    sequence is or not in a monophyletic clade with reference of only one
+    subtype/ circulating recombinat form (crf). If the previously stated conditions
+    occur a subtype/crf is outputed, otherwise np.nan is outputed.
+
+	Args:
+        tree (nwk): Phylogenetic tree in nwk format.
+
+	Returns:
+        List with two items: name and processed result.
+	"""
     name_target = tree[:-4].replace('trees/all_', '').replace('trees/pure_', '').replace('trees/recomb_', '')
 
     t = Phylo.read(tree, 'newick')
@@ -80,12 +109,24 @@ def process_trees(tree):
 
 
 def get_clossest_blast(blast_res):
+    """Extract closser reference from the BLAST
+
+    This function parses the results from the BLAST, turn it into a pandas
+    dataframe, verifies how many diferent subtype sequences have the top BLAST
+    score, if more than one the output is np.nan, if only one the output is that
+    subtype/CRF. 
+
+	Args:
+        blast_res (txt): BLAST result. Is csv.
+
+	Returns:
+        List with two items: name and processed result.
+	"""
     name_out = blast_res.replace('blast/blast_', '').replace('.txt', '')
 
     df = pd.read_csv(blast_res)
     df.columns = [0,1,2,3]
 
-#    df = pd.read_csv(blast_res, header=None)
     filter_df = df.sort_values(by=[3], ascending=False).copy()
 
     best_score = filter_df[3].values[0]
@@ -99,6 +140,21 @@ def get_clossest_blast(blast_res):
         return [name_out, np.NaN]
 
 def make_decision(idx, df):
+    """Create final result based on all analysis 
+
+    This function consists in a series of if statments. If stament can be seen
+    as a 'rule' with requirements that need to be meet to the final SNAPPy
+    result to be created.  
+
+	Args:
+        idx (str): Internal SNAPPy id.
+        df (dataframe): Tabular like file with the outputs from all the analysis
+        performed
+
+	Returns:
+        List with two items: rule used and final SNAPPy output.
+	"""
+
     to_process = list(df.loc[idx])
 
     # all methods agree
