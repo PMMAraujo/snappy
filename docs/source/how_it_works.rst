@@ -6,9 +6,12 @@ How it works
 Quick sum-up
 ^^^^^^^^^^^^
 
-As the name indicates SNAPPy is a pipeline, a series of tools used in succession or parallel to achieve an end. The general flow of the tool can be see in the follow diagram:
+As the name indicates SNAPPy is a pipeline, a series of tools used in succession or parallel to achieve an end. The general flow of the tool can be see in Fugure 1.
 
-IMAGE 
+.. figure:: snappy_flow.png
+    :figclass: align-center
+
+    **Figure 1: Schematic representation of the SNAPPy workflow.** 
 
 - From a multiple sequence alignment a series of single FASTA sequence files are build.
 - Each of these FASTA files is then aligned to the HIV-1 reference genome (`HXB2 (K03455) <https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455>`_).
@@ -64,11 +67,12 @@ The target sequence (see :ref:`align`) and a non-HIV-1 sequence (for rooting, se
 Sliding window BLAST
 ^^^^^^^^^^^^^^^^^^^^
 
-This step of the pipeline starts from the sequence files created in the :ref:`align` step. The positions with gaps ('_') in the target sequence are excluded. The length of the sliding window is 400 nucleotides. Fragments with length inferior to 400 will not be processed by this approach, and 'impossible to test recomb (lenght < 400bp)' will be written to the output file. The step size is 50 nucleotides, which creates 8 bins for each window. The result for each BLAST window is the subtype of the top result (bitscore). If more than one sequence of different subtypes have the same top score the output for all bins of that window is null. If the BLAST fails or no output is produced the output for all bins of that window is null. At the end of all sliding windows being processes several bins may have multiple outputs, a majority rule is applied to decide the final subtype for that bin. In case of tie the result for that bin is null. In this sliding window BLAST we are only BLASting against a database of HIV-1 subtype references, plus the CRFs 01 and 02 due to the reasons previously discussed in :ref:`blast_c`. The BLAST command used for each window is : 'blastn -db "database" -query "target -out', "output_file_name" -word_size 10 -outfmt 10 -evalue 1.e-100'. The database file for the BLAST can be consulted `in this link <https://github.com/PMMAraujo/snappy/blob/master/data/01-02_and_pure_refs.fasta>`_ . Similarly to what was mentioned in :ref:`blast_c` section these parameters proved to be very useful in the case of highly similar sequences like HIV-1. Please consult figure x for a graphic explanation of this process. The resulting file is them written to the folder 'blast' with the following notation: recblast_{internal_id}.txt.
+This step of the pipeline starts from the sequence files created in the :ref:`align` step. The positions with gaps ('_') in the target sequence are excluded. The length of the sliding window is 400 nucleotides. Fragments with length inferior to 400 will not be processed by this approach, and 'impossible to test recomb (lenght < 400bp)' will be written to the output file. The step size is 50 nucleotides, which creates 8 bins for each window. The result for each BLAST window is the subtype of the top result (bitscore). If more than one sequence of different subtypes have the same top score the output for all bins of that window is null. If the BLAST fails or no output is produced the output for all bins of that window is null. At the end of all sliding windows being processes several bins may have multiple outputs, a majority rule is applied to decide the final subtype for that bin. In case of tie the result for that bin is null. In this sliding window BLAST we are only BLASting against a database of HIV-1 subtype references, plus the CRFs 01 and 02 due to the reasons previously discussed in :ref:`blast_c`. The BLAST command used for each window is : 'blastn -db "database" -query "target -out', "output_file_name" -word_size 10 -outfmt 10 -evalue 1.e-100'. The database file for the BLAST can be consulted `in this link <https://github.com/PMMAraujo/snappy/blob/master/data/01-02_and_pure_refs.fasta>`_ . Similarly to what was mentioned in :ref:`blast_c` section these parameters proved to be very useful in the case of highly similar sequences like HIV-1. Please consult Figure 2 for a graphic explanation of this process. The resulting file is them written to the folder 'blast' with the following notation: recblast_{internal_id}.txt.
 
+.. figure:: snappy_sliding_window.png
+    :figclass: align-center
 
-IMAGE
-
+    **Figure 2: Schematic representation of the sliding window approach. Demonstrating evidence of B/C recombination.**
 
 .. _rules:
 
