@@ -9,6 +9,11 @@ echo -e '\n# added by SNAPPy to run miniconda' >> ~/.bashrc
 
 conda init
 conda-env create -f environment.yaml
+
+source /conda/etc/profile.d/conda.sh
+conda activate snappy
+py.test
+
 #conda activate test_subtyper
 
 echo "Please open a new terminal and activate de environment: 'conda activate snappy'"
