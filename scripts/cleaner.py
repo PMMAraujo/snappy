@@ -9,14 +9,14 @@ FILES = ['subtype_results.csv', 'report_subtype_results.csv',
 def clean_folders(path):
     """Folder cleaner.
 
-    This function iterates over the folders defined in 'FOLDERS' list deleteing
+    This function iterates over the folders defined in 'FOLDERS' list deleting
     the files inside them and after that the folder itself.
 
 	Args:
         path (str): String representing the path to a folder.
 
 	Returns:
-        This function doe not return.
+        This function does not return.
 	"""
     if os.path.exists(path):
         in_folder = os.listdir(path)
@@ -34,7 +34,7 @@ def clean_files(path):
         path (str): String representing the path to a file.
 
 	Returns:
-        This function doe not return.
+        This function does not return.
 	"""
     if os.path.exists(path):
         os.remove(path)
