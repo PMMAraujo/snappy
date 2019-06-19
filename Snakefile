@@ -89,7 +89,7 @@ rule map_and_align:
     output:
         "aligned/aligned_{sample}.fasta"
     shell:
-        "python scripts/align_and_map.py -i '{input}' -o '{output}' -g {GR}"
+        "python scripts/align_and_map.py -i '{input}' -o '{output}' -g '{GR}'"
 
 
 rule split:
