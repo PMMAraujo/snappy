@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Tutorials &#8212; SNAPPy-HIV1-Subtyping 0.0.1 documentation</title>
+    <title>Tutorials &#8212; SNAPPy-HIV1-Subtyping 1.0.0 documentation</title>
     <link rel="stylesheet" href="_static//default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -34,7 +34,7 @@
             
   <div class="section" id="tutorials">
 <span id="id1"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
-<p>Please ensure SNAPPy’s installation was successful. If you need help regarding SNAPPy’s installation please visit the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> section. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment is active:</p>
+<p>Please ensure SNAPPy’s installation was successful. If you need help regarding SNAPPy’s installation please visit the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> section. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">actiavte</span> <span class="n">snappy</span>
 </pre></div>
 </div>
@@ -42,13 +42,13 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span><span class="o">.</span><span class="n">test</span>
 </pre></div>
 </div>
-<p>To run the tests the conda snappy environment need to be active. If the tests result in error it is advised to reinstall the tool.</p>
+<p>To run the tests the conda snappy environment needs to be active. If the tests result in error it is advised to reinstall the tool.</p>
 <blockquote>
 <div></div></blockquote>
 <div class="section" id="subtyping-with-snappy">
 <span id="tut1"></span><h2>1: Subtyping with SNAPPy<a class="headerlink" href="#subtyping-with-snappy" title="Permalink to this headline">¶</a></h2>
 <p>Disclaimer: This tutorial and Tutorial <a class="reference internal" href="#tut2"><span class="std std-ref">2: Alignments with SNAPPy</span></a> share the first four steps.</p>
-<p>HIV-1 subtyping is the main reason SNAPPY was build. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment is active:</p>
+<p>HIV-1 subtyping is the main reason SNAPPY was build. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">actiavte</span> <span class="n">snappy</span>
 </pre></div>
 </div>
@@ -77,10 +77,10 @@ In this tutorial we will focus on the folder ‘input’ and the  file ‘config
 <p>3)
 As you can see SNAPPy has a file inside the folder ‘input’. This is a test file used in this tutorial. For a successful run only one file can be inside the ‘input’ folder. Therefore, if you want to run an analysis with your data you need to first delete the default file inside the ‘input’ folder.</p>
 <p>4)
-Now lets look at the ‘config.yaml’ file:´</p>
-<blockquote>
-<div><p>cat config.yaml</p>
-</div></blockquote>
+Now lets look at the ‘config.yaml’ file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">config</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
 <p>Expected result:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genomic_region</span><span class="p">:</span>
   <span class="s1">&#39;GAG-POL-ENV&#39;</span>
@@ -89,7 +89,7 @@ Now lets look at the ‘config.yaml’ file:´</p>
 <p>5)
 As you can see the genomic region selected for the SNAPPy’s analysis is ‘GAG-POL-ENV’ which basically consists the HIV-1 regions named GAG, POL, and ENV concatenated (according to <a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a> reference genome). To use SNAPPy for subtyping the selected genomic region in the ‘config.yaml’ file always needs to be ‘GAG-POL-ENV’. If for any reason you have changed it (for instance during Tutorial <a class="reference internal" href="#tut2"><span class="std std-ref">2: Alignments with SNAPPy</span></a>) change it back.</p>
 <p>6)
-In order to the subtyping simple type:</p>
+In order to subtype using SNAPPy simple type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">subtype_all</span>
 </pre></div>
 </div>
@@ -104,7 +104,7 @@ Now lets see the files and folders created by SNAPPy during the subtyping proces
 </pre></div>
 </div>
 <p>9)
-As you can see the folders ‘aligned’; ‘blast’; ‘trees’ and the files ‘subtype_results.csv’ and ‘report_subtype_results.csv’ were created. The file ‘subtype_results.csv’ has the results that we wanted from running these task, the file ‘report_subtype_results.csv’ has a more extensive description of the tool outputs (more about this in the Tutorial <a class="reference internal" href="#tut3"><span class="std std-ref">3: Results Analysis</span></a>). The folders ‘aligned’, ‘blast’, and ‘trees’ contain the intermediate files created by SNAPPy during the subtyping process ( more about this in the section <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a>). Now lets look at the file ‘subtype_results.csv’ (Note: You can use any other text editor or spreadsheet visualization tool.):</p>
+As you can see the folders ‘aligned’; ‘blast’; ‘trees’ and the files ‘subtype_results.csv’ and ‘report_subtype_results.csv’ were created. The file ‘subtype_results.csv’ has the results that we wanted from running this task, the file ‘report_subtype_results.csv’ has a more extensive description of the tool outputs (more about this in the Tutorial <a class="reference internal" href="#tut3"><span class="std std-ref">3: Result Analysis</span></a>). The folders ‘aligned’, ‘blast’, and ‘trees’ contain the intermediate files created by SNAPPy during the subtyping process ( more about this in the section <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a>). Now lets look at the file ‘subtype_results.csv’ (Note: You can use any other text editor or spreadsheet visualization tool.):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">subtype_results</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
@@ -123,7 +123,7 @@ Lets try to run the exactly same task again:</p>
 <p>12)
 Nothing was done because the output that we requested was already built! This is one of the great advantages of using a pipeline software like <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/index.html">Snakemake</a> , it goes top down looking for the requested file and the files needed to create it. If it is already there nothing needs to be done.</p>
 <p>13)
-Now lets use the SNAPPy rule thst allows us to clean all the outputs from a previous run. Attention!! If you have results that you want to keep change their name or move them to another folder before running the clean-up command:</p>
+Now lets use the SNAPPy rule that allows us to clean all the outputs from a previous run. Attention!! If you have results that you want to keep change their name or move them to another folder before running the clean-up command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">delete_all_outputs</span>
 <span class="n">ls</span>
 </pre></div>
@@ -143,8 +143,8 @@ That’s it for this tutorial! If you now want to use SNAPPy on your own date do
 <div class="section" id="alignments-with-snappy">
 <span id="tut2"></span><h2>2: Alignments with SNAPPy<a class="headerlink" href="#alignments-with-snappy" title="Permalink to this headline">¶</a></h2>
 <p>Disclaimer: This tutorial and Tutorial <a class="reference internal" href="#tut1"><span class="std std-ref">1: Subtyping with SNAPPy</span></a> share the first four steps.</p>
-<p>Al thought SNAPPy was built for HIV-1 subtyping one of its intermediary tasks is alignment to the reference genome (<a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a>). Since SNAPPy is built based on <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/index.html">Snakemake</a> we can call intermediary tasks, such as alignment, without running the entire pipeline. Making SNAPPy extremely useful for performing HIV-1 alignments.
-To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment is active:</p>
+<p>Althought SNAPPy was built for HIV-1 subtyping one of its intermediary tasks is alignment to the reference genome (<a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a>). Since SNAPPy is built based on <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/index.html">Snakemake</a> we can call intermediary tasks, such as alignment, without running the entire pipeline. Making SNAPPy extremely useful for performing HIV-1 alignments.
+To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">actiavte</span> <span class="n">snappy</span>
 </pre></div>
 </div>
@@ -173,17 +173,17 @@ In this tutorial we will focus on the folder ‘input’ and the  file ‘config
 <p>3)
 As you can see SNAPPy has a file inside the folder ‘input’. This is a test file used in this tutorial. For a successful run only one file can be inside the input folder. Therefore, if you want to run an analysis with your data you need to first delete the default file inside the input folder.</p>
 <p>4)
-Now lets look at the ‘config.yaml’ file:´</p>
-<blockquote>
-<div><p>cat config.yaml</p>
-</div></blockquote>
+Now lets look at the ‘config.yaml’ file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">config</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
 <p>Expected result:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genomic_region</span><span class="p">:</span>
   <span class="s1">&#39;GAG-POL-ENV&#39;</span>
 </pre></div>
 </div>
 <p>5)
-As you can see the genomic region selected for the SNAPPy’s analysis is ‘GAG-POL-ENV’ which basically consists the HIV-1 regions named GAG, POL, and ENV concatenated ( according to the <a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a> reference genome). Further on this tutorial we will use different genomic regions.</p>
+As you can see the genomic region selected for the SNAPPy’s analysis is ‘GAG-POL-ENV’ which basically consists in the HIV-1 regions named GAG, POL, and ENV concatenated ( according to the <a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a> reference genome). Further on this tutorial we will use different genomic regions.</p>
 <p>6)
 In order to perform the alignment of the sequences in the folder ‘input’ for the region specified in ‘config.yaml’ simple type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">align_all</span>
@@ -199,7 +199,7 @@ As you can see SNAPPy started executing the tasks needed (at green) to obtain th
 </pre></div>
 </div>
 <p>8)
-The folder ‘aligned’ and the file ‘all_aligned.fasta’ were created. The folder ‘aligned’ contains intermediate files used to create the final MSA. You can now use a text editor or your favorite FASTA file reader (for instance <a class="reference external" href="https://ormbunkar.se/aliview/">AliView</a>) to look at the ‘all_aligned.fasta’ file.As you can see it contains a lot of gaps (‘-‘) because the aligned sequences only contained information for the GAG region and we requested an alignment to the HXB2 reference genome for the GAG,POL, and ENV regions ( as specified in the ‘config.yaml file’). The produced sequences are of length 6918 nucleotides.</p>
+The folder ‘aligned’ and the file ‘all_aligned.fasta’ were created. The folder ‘aligned’ contains intermediate files used to create the final MSA. You can now use a text editor or your favorite FASTA file reader (for instance <a class="reference external" href="https://ormbunkar.se/aliview/">AliView</a>) to look at the ‘all_aligned.fasta’ file. As you can see it contains a lot of gaps (‘-‘) because the aligned sequences only contained information for the GAG region and we requested an alignment to the HXB2 reference genome for the GAG,POL, and ENV regions ( as specified in the ‘config.yaml file’). The produced sequences are of length 6918 nucleotides.</p>
 <p>9)
 Now lets save the obtained alignment to a new folder called ‘safe_outputs’ and use a SNAPPy rule to clean all the outputs previously created:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">safe_outputs</span>
@@ -234,8 +234,8 @@ That’s it for this tutorial! Don’t forget that if you plan on using SNAPPy f
 <blockquote>
 <div></div></blockquote>
 </div>
-<div class="section" id="results-analysis">
-<span id="tut3"></span><h2>3: Results Analysis<a class="headerlink" href="#results-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="result-analysis">
+<span id="tut3"></span><h2>3: Result Analysis<a class="headerlink" href="#result-analysis" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial we will give a more in-depth look at the outputs created by SNAPPy in the subtyping process. This tutorial starts after Tuturial <a class="reference internal" href="#tut1"><span class="std std-ref">1: Subtyping with SNAPPy</span></a>, and uses the outputs created in that tutorial. If you have not run Tutorial 1 yet or no longer have its outputs in the folder please do so before the next steps.</p>
 <p>1)
 Look at the content of the snappy folder:</p>
@@ -251,13 +251,13 @@ In this tutorial we will focus on the files ‘report_subtype_results.csv’ and
 <p>3)
 This is an extremely simple file with only tree columns: ‘id’, ‘name’, ‘result’.</p>
 <p>3.1)
-The ‘id’ field in only important if you want to evaluate by yourself the intermediate files created by SNAPPy in the ‘aligned’, ‘blast’ and ‘trees’ folders. For instance the files refering to the FASTA with the header ‘test01’ will be named ‘0’ like: ‘aligned/0.fasta’, ‘aligned/aligned_0.fasta’, ‘blast/blast_0.txt’, ‘blast/recblast_0.txt’, ‘trees/all_0.nwk’, ‘trees/pure_0.nwk’, and ‘trees/recomb_0.nwk’. If you want to know more on why and how those files were created please see the <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a> section.</p>
+The ‘id’ field is only important if you want to evaluate by yourself the intermediate files created by SNAPPy in the ‘aligned’, ‘blast’ and ‘trees’ folders. For instance the files refering to the FASTA with the header ‘test01’ will be named ‘0’ like: ‘aligned/0.fasta’, ‘aligned/aligned_0.fasta’, ‘blast/blast_0.txt’, ‘blast/recblast_0.txt’, ‘trees/all_0.nwk’, ‘trees/pure_0.nwk’, and ‘trees/recomb_0.nwk’. If you want to know more on why and how those files were created please see the <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a> section.</p>
 <p>3.2)
 The ‘name’ field corresponds to the headers found in the HIV-1 sequences in the file inside the ‘input’ folder. This will be the field that allows the user to cross the SNAPPy outputs with the user nomenclature.</p>
 <p>3.3)
 The ‘result’ field only contains the output produced by SNAPPy regathering that FASTA sequence subtype. No information is displayed regathering the analysis by BLAST or phylogenetic inference or how the decision was made. That information is in the file ‘report_subtype_results.csv’.</p>
 <p>4)
-Now lets open the report_subtype_results.csv. This output has 12 columns named: ‘id’, ‘name’, ‘result’, ‘recomb_result’, ‘node_all_refs’, ‘s_node_all_refs’, ‘node_pure_refs’, ‘s_node_pure_refs’, ‘node_recomb_refs’, ‘s_node_recomb_refs’, ‘closser_ref’, and ‘rule’. The first three are exactly the same as for the subtype_results.csv file ( explained it points 3.1 to 3.3). The remaining will be described in the following topics.</p>
+Now lets open the report_subtype_results.csv. This output has 12 columns named: ‘id’, ‘name’, ‘result’, ‘recomb_result’, ‘node_all_refs’, ‘s_node_all_refs’, ‘node_pure_refs’, ‘s_node_pure_refs’, ‘node_recomb_refs’, ‘s_node_recomb_refs’, ‘closser_ref’, and ‘rule’. The first three are exactly the same as for the ‘subtype_results.csv file’ ( explained it points 3.1 to 3.3). The remaining will be described in the following topics.</p>
 <p>4.1)
 The field ‘recomb_result’ referes to an output obtained in a sliding with multiple BLASTs of the input. What this means is that the input was sliced multiple times and each slice served as a BLAST input to a database containing HIV-1 reference sequences. This test was mainly done looking for evidence of recombination in the target sequence. If you want to read more about the sliding window applied or the reference sequences used please read the <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a> section.</p>
 <p>4.2)
@@ -267,9 +267,9 @@ The fields ‘s_node_all_refs’, ‘s_node_pure_refs’, and ‘s_node_recomb_r
 <p>4.4)
 The field ‘closser_ref’ shows the subtype or CRF of the reference sequence that showed to be closer to the target sequence in a BLAST analysis with all HIV-1 reference sequences used. If you want to know more about this BLAST or the reference sequences used please go to the section <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a>.</p>
 <p>4.5)
-The field ‘rule’ is merely informative and show which SNAPPy ‘rule’ was used to make the decision about the subtyping output in the result field based on the other fields. If you want to know more about these rules please go to the section <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a>.</p>
+The field ‘rule’ is merely informative and shows which SNAPPy ‘rule’ was used to make the decision about the subtyping output in the ‘result’ field based on the other fields. If you want to know more about these rules please go to the section <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a>.</p>
 <p>5)
-HIV-1 subtyping is a somewhat an ambiguous process. We believe that simplifying the ‘subtype_results.csv’ file allows users to quickly use SNAPPy, while providing the ‘report_subtype_results.csv’ file allows the user to observe the intermediate results created by SNAPPy and the decisions made. Please keep in mind that there will be cases harder to subtype that others, but you can always come back to the report_subtype_results.csv file and understand why SNAPPy outputted a given result.</p>
+We believe that simplifying the ‘subtype_results.csv’ file allows users to quickly use SNAPPy, while providing the ‘report_subtype_results.csv’ file allows the user to observe the intermediate results created by SNAPPy and the decisions made. Please keep in mind that there will be cases harder to subtype that others, but you can always come back to the report_subtype_results.csv file and understand why SNAPPy outputted a given result.</p>
 <p>6)
 After this tutorial we believe that you are equipped with the knowledge to use SNAPPy and completely understand its outputs.</p>
 </div>
@@ -297,7 +297,7 @@ After this tutorial we believe that you are equipped with the knowledge to use S
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#subtyping-with-snappy">1: Subtyping with SNAPPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#alignments-with-snappy">2: Alignments with SNAPPy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#results-analysis">3: Results Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#result-analysis">3: Result Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">SNAPPy commands</a></li>

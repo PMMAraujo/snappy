@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Installation &#8212; SNAPPy-HIV1-Subtyping 0.0.1 documentation</title>
+    <title>Installation &#8212; SNAPPy-HIV1-Subtyping 1.0.0 documentation</title>
     <link rel="stylesheet" href="_static//default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -34,13 +34,13 @@
             
   <div class="section" id="installation">
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>This pipeline was build upon many dependencies and <a class="reference external" href="http://www.python.org/">Python</a> code. Therefore there was the need to use a package/environment manager. For this task we highly recommend <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a> . The following installation instructions assume the user wants to install and use <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a>. If you already have any recent conda distribution on your system do not use the <a class="reference internal" href="#quick-install-guide">Quick install Guide</a>, as it is it will install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>. If you do not which to use <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a> please look at all the dependencies needed to use SNAPPy in the <a class="reference external" href="https://github.com/PMMAraujo/snappy/blob/master/environment.yaml">‘environment.yaml’ file</a>.</p>
+<p>This pipeline was build upon many dependencies and <a class="reference external" href="http://www.python.org/">Python</a> code. Therefore there was the need to use a package/environment manager. For this task we highly recommend <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a> . The following installation instructions assume the user wants to install and use <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a>. If you already have any recent conda distribution on your system do not use the <a class="reference internal" href="#quick-install-guide">Quick install Guide</a>, as it will install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>. If you do not which to use <a class="reference external" href="https://docs.conda.io/en/latest/">CONDA</a> please look at all the dependencies needed to use SNAPPy in the <a class="reference external" href="https://github.com/PMMAraujo/snappy/blob/master/environment.yaml">‘environment.yaml’ file</a>.</p>
 <blockquote>
 <div></div></blockquote>
 <div class="section" id="quick-install-guide">
 <span id="quick"></span><h2>Quick install Guide<a class="headerlink" href="#quick-install-guide" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p>Download SNAPPy from <a class="reference external" href="https://github.com/PMMAraujo/snappy">here</a> and put it in a desired location</p></li>
+<li><p>Download of clone SNAPPy from <a class="reference external" href="https://github.com/PMMAraujo/snappy">here</a> and put it in a desired location</p></li>
 <li><p>Open a terminal and move to the downloaded folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">snappy</span>
 </pre></div>
@@ -84,24 +84,28 @@ bash ./miniconda.sh -b -p $HOME/miniconda
 </ol>
 <p>This task may take several minutes.</p>
 <ol class="arabic" start="2">
-<li><p>Download SNAPPy from <a class="reference external" href="https://github.com/PMMAraujo/snappy">here</a> and put it in a desired location</p></li>
+<li><p>Download or clone SNAPPy from <a class="reference external" href="https://github.com/PMMAraujo/snappy">here</a> and put it in a desired location</p></li>
 <li><p>Move to the downloaded folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">snappy</span>
 </pre></div>
 </div>
 </li>
-<li><p>Activate conda and add it tho the bashrc:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$HOME/miniconda/bin:$PATH&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"># added by SNAPPy to run miniconda&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
-<span class="n">MISSING</span>
+<li><p>Activate conda and add it tho the bash paths:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">conda</span> <span class="n">init</span>
 </pre></div>
 </div>
 </li>
 </ol>
-<p>Note: It is not actually needed to add conda path to the bashrc but it makes it easier to use.</p>
+<p>Note: It is not actually needed to add conda path to the bash path but it makes it easier to use.</p>
 <ol class="arabic" start="5">
 <li><p>Create SNAPPy’s conda environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span><span class="o">-</span><span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+</li>
+<li><p>Activate SNAPPy’s conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">snappy</span>
 </pre></div>
 </div>
 </li>
