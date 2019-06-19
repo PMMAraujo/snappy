@@ -51,11 +51,10 @@ This task may take several minutes.
 
     cd snappy
 
-4) Activate conda and add it tho the bashrc::
+4) Activate conda and add it tho the bash paths::
 
-    export PATH="$HOME/miniconda/bin:$PATH"
-    echo -e '\n# added by SNAPPy to run miniconda' >> ~/.bashrc
-    MISSING
+    source ~/miniconda/etc/profile.d/conda.sh
+    conda init
 
 Note: It is not actually needed to add conda path to the bashrc but it makes it easier to use.
 
@@ -63,11 +62,14 @@ Note: It is not actually needed to add conda path to the bashrc but it makes it 
 
     conda-env create -f environment.yaml
 
-6) Run the tests to ensure the installation was successful. Please ensure no errors occur::
+6) Activate SNAPPy's conda environment::
+    conda activate snappy
+
+7) Run the tests to ensure the installation was successful. Please ensure no errors occur::
 
     py.test
 
-7) SNAPPy is now ready to use! When you want to use SNAPPy open a new terminal inside SNAPPy's folder and activate the conda by typing::
+8) SNAPPy is now ready to use! When you want to use SNAPPy open a new terminal inside SNAPPy's folder and activate the conda by typing::
 
     conda activate snappy
 
