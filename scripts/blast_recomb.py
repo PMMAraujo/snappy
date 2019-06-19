@@ -13,7 +13,7 @@ def splits_for_blast(target, NAME):
     it outputs  'less than 400 nucleotides'. 
 
 	Args:
-        target (np.array): Fasta seqeunce in an array.
+        target (np.array): Fasta sequence in an array.
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
 	Returns:
