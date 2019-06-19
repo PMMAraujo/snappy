@@ -5,7 +5,7 @@ def spliter(msa, keys, idx):
 
     This function uses the Biopython module SeqIO to parse a multiple sequences 
     alignment and separate each fasta sequence in a separated file. The
-    resulting files are wirtten to the folder 'aligned' with the following
+    resulting files are written to the folder 'aligned' with the following
     notation: {id_of_the_fasta_sequence}.fasta.
 
 	Args:
@@ -15,7 +15,7 @@ def spliter(msa, keys, idx):
         the msa file.
 
 	Returns:
-        This function doe not return.
+        This function does not return.
 	"""
     msa_as_list = [[x.id, str(x.seq)] for x in SeqIO.parse(msa, 'fasta')]
     keysidx = dict(zip(idx, keys))
