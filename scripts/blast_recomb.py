@@ -30,18 +30,18 @@ def splits_for_blast(target, NAME):
         return sub_aligns
 
 
-def sub_aligns(target, NAME):
+def do_sub_aligns(target, NAME):
     """Create slices for fasta file
 
     This function uses the output list from the function 'splits_for_blast' and
-    writes  a multiple seqeunce alignment of several fasta file slices.
+    writes  a multiple sequence alignment of several fasta file slices.
     If the original sequence (without gaps) is less than 400 nucleotide long
     the output file will contain: 'less than 400 nucleotides'. The file is
     outputed to the folder 'blast' with the following notation:
     sub_{id_of_the_fasta_sequence}.fasta
     
 	Args:
-        target (fasta): Fasta file with one aligned seqeunce.
+        target (fasta): Fasta file with one aligned sequence.
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
 	Returns:
@@ -66,19 +66,19 @@ def sub_aligns(target, NAME):
 def do_blast_window(target, NAME):
     """Do sliding window BLAST
 
-    This function uses the fasta files created in 'sub_aligns' and performs a
+    This function uses the fasta files created in 'do_sub_aligns' and performs a
     BLAST agains the database 'data/db_01-02_and_pures'. The BLAST results are
     written to the folder 'blast' with the following notation:
     recblast_{id_of_the_fasta_sequence}.txt
 
 	Args:
-        target (fasta): Fasta file with one aligned seqeunce.
+        target (fasta): Fasta file with one aligned sequence.
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
 	Returns:
         This function does not return.
 	"""
-    to_blast = sub_aligns(target, NAME)
+    to_blast = do_sub_aligns(target, NAME)
     if to_blast == 'impossible to test recomb (lenght < 400bp)':
         with open(f'blast/recblast_{NAME}.txt', 'w') as out_subs:
             out_subs.write('impossible to test recomb (lenght < 400bp)\n')

@@ -24,7 +24,7 @@ else:
 # get ids from the INPUT file (which is as msa)
 MSA = SeqIO.parse('input/{}'.format(INPUT), 'fasta')
 KEYS, IDS = keys_creator.create_keys([seq.id for seq in MSA])
-
+print('Fasta file contains', len(IDS), 'sequences.')
 
 ### SUBTYPER
 
@@ -89,7 +89,7 @@ rule map_and_align:
     output:
         "aligned/aligned_{sample}.fasta"
     shell:
-        "python scripts/align_and_map.py -i '{input}' -o '{output}' -g {GR}"
+        "python scripts/align_and_map.py -i '{input}' -o '{output}' -g '{GR}'"
 
 
 rule split:
