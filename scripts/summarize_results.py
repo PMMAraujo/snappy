@@ -9,7 +9,7 @@ def process_blast_recomb(name):
     This function parses the results from the slidding window BLAST
     ('recblast_{id_of_the_fasta_sequence}.txt'), filters the top results,
     divide the results by bins (of 50 nucleotides), and outputs the majority
-    rule result for r«each been. Finaly an output for the given seqeunce is
+    rule result for r«each been. Finaly an output for the given sequence is
     returned, if there is multiple results they are separated by '/'.
 
 
@@ -74,7 +74,7 @@ def process_trees(tree):
     This function parses the results from the phylogenetic trees created, roots
     the trees on the outgrouop ('CONSENSUS_CPZ'), and evaluated if the target
     sequence is or not in a monophyletic clade with reference of only one
-    subtype/ circulating recombinat form (crf). If the previously stated conditions
+    subtype/circulating recombinat form (crf). If the previously stated conditions
     occur a subtype/crf is outputed, otherwise np.nan is outputed.
 
 	Args:
@@ -142,14 +142,14 @@ def get_clossest_blast(blast_res):
 def make_decision(idx, df):
     """Create final result based on all analysis 
 
-    This function consists in a series of if statments. If stament can be seen
+    This function consists in a series of if statments. If statement can be seen
     as a 'rule' with requirements that need to be meet to the final SNAPPy
     result to be created.  
 
 	Args:
         idx (str): Internal SNAPPy id.
         df (dataframe): Tabular like file with the outputs from all the analysis
-        performed
+        performed.
 
 	Returns:
         List with two items: rule used and final SNAPPy output.
