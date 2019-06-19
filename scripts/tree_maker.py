@@ -10,10 +10,10 @@ OUT_CPZ = [[x.id] + list(str(x.seq)) for x in SeqIO.parse(f'data/out_cpz.fasta',
 def blast_closser(file_name, NAME):
     """BLAST to find closser reference
 
-    From a single fasta file a version of it withot any gaps ('-') is created
+    From a single fasta file a version of it without any gaps ('-') is created
     and written to the folder 'blast' as 
     'nogap_{id_of_the_fasta_sequence}.fasta'.
-    Then that no gap sequence is used as anm input in a BLAST agaibnt the
+    Then that no gap sequence is used as an input in a BLAST against the
     database 'data/db_all_refs'.
     Three group of reference sequences are created, those will be used fot three
     diferent phylogenetic analysis. One contains the first 48 BLAST results,
@@ -25,7 +25,7 @@ def blast_closser(file_name, NAME):
     'msa'. The alignment method does not allow any gaps the reference sequence.
     After the alignment is performed the given sequence in 'msa' will be trimed
     to only contain the genomic region specified by the user in 'gr'. The
-    resulting file is them wirtten to the folder 'aligned' with the following
+    resulting file is them written to the folder 'aligned' with the following
     notation: aligned_{id_of_the_fasta_sequence}.fasta. This function is called
     by the function 'build_msas'.
 
@@ -75,7 +75,7 @@ def build_msas(file_name, NAME):
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
 	Returns:
-        This function does not return
+        This function does not return.
 	"""
     closser_data = blast_closser(file_name, NAME)
     target = [np.array([x.id] + list(str(x.seq))) for x in SeqIO.parse(f'{file_name}', 'fasta')][0]
@@ -93,7 +93,7 @@ def specify_type_msas(col, name, target, mask_gaps, closser_data, NAME):
     This writtes msa files. From the BLAST output it infers the best result
     (bitscore), geting all references with that score. Then the positions with
     gaps present in the target sequence are deleted in the outgroup sequence
-    ('OUT_CPZ') and the remaining closser referenecs. Finaly the msa file is
+    ('OUT_CPZ') and the remaining closser references. Finaly the msa file is
     written to the folder 'trees' with the following notation:
     msa_{type}_{id_of_the_fasta_sequence}.fasta. Type can take the any string
     but only 'all, 'pure', and 'recomb' are used.
@@ -108,7 +108,7 @@ def specify_type_msas(col, name, target, mask_gaps, closser_data, NAME):
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
 	Returns:
-        This function does not return
+        This function does not return.
 	"""
     msa_idx = closser_data[col]
     closser_seqs = np.array([x for x in ALL_REFS if x[0] in msa_idx])
@@ -140,7 +140,7 @@ def tree_maker(file_name, NAME):
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
 	Returns:
-        This function does not return
+        This function does not return.
 	"""
     build_msas(file_name, NAME)
 

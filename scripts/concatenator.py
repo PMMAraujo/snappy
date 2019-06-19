@@ -5,7 +5,7 @@ def concatenator(input, keys, ids):
 
     This function uses the Biopython module SeqIO to parse several single 
     sequences fata files. It then procedes to write a single multiple sequence
-    alignment ( of aligned sequences).
+    alignment (of aligned sequences).
 
 	Args:
         input (fasta): Single sequence fasta file.
@@ -13,7 +13,7 @@ def concatenator(input, keys, ids):
         idx (str): List of internal SNAPPy ids corresponding to the header in 
         the msa file.
 	Returns:
-        all_aligned.fasta ( fasta): Multiple sequence alignment file
+        all_aligned.fasta (fasta): Multiple sequence alignment file
 	"""
     this_seq = [[x.id, str(x.seq)] for x in SeqIO.parse(input, 'fasta')][0]
     where = keys.index(this_seq[0])
