@@ -205,18 +205,21 @@ def make_decision(idx, df):
     ## rules_c4: tree all agrees tree recomb, and their result is a crf
     elif ((to_process[8] == 2)):
         if ((to_process[1] == to_process[5]) & (to_process[2] >= 0.7) &
-            (to_process[6] >= 0.7) & ('_' in str(to_process[1]))):
+            (to_process[6] >= 0.7) & ('_' in str(to_process[1])) &
+            (str(to_process[1]) != 'nan')):
             return ['rule_c4', to_process[1]]
         ## rules_p5: tree all agrees tree pure, and closser, great support for 1 tree
         elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7]) &
-              ((to_process[2] >= 0.9) | (to_process[4] >=0.9))):
+              ((to_process[2] >= 0.9) | (to_process[4] >=0.9)) &
+              (str(to_process[1]) != 'nan')):
             return ['rule_p5', to_process[1]]
         ## rules_c5: tree all agrees tree recomb, and closser, and trees give crf  
         elif ((to_process[1] == to_process[5]) & ('_' in str(to_process[1])) &
-              (to_process[1] == to_process[7])):
+              (to_process[1] == to_process[7]) & (str(to_process[1]) != 'nan')):
             return ['rule_c5', to_process[1]]
         ## rules_p6: tree all agrees tree pure, and closser
-        elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7])):
+        elif ((to_process[1] == to_process[3]) &
+             (to_process[1] == to_process[7]) & (str(to_process[1]) != 'nan')):
             return ['rule_p6', to_process[1]]
         ## rules_u1: remaining cases are an complex URF       
         else:     
@@ -226,18 +229,22 @@ def make_decision(idx, df):
     ## rules_c6: tree all agrees tree recomb, and their result is a crf
     elif ((to_process[8] == 1)):
         if ((to_process[1] == to_process[5]) & (to_process[2] >= 0.7) &
-            (to_process[6] >= 0.7) & ('_' in str(to_process[1]))):
+            (to_process[6] >= 0.7) & ('_' in str(to_process[1])) &
+            (str(to_process[1]) != 'nan')):
             return ['rule_c6', to_process[1]]
         ## rules_p7: tree all agrees tree pure, and closser, great support for 1 tree
         elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7]) &
-              ((to_process[2] >= 0.9) | (to_process[4] >=0.9))):
+              ((to_process[2] >= 0.9) | (to_process[4] >=0.9)) &
+              (str(to_process[1]) != 'nan')):
             return ['rule_p7', to_process[1]]
         ## rules_c7: tree all agrees tree recomb, and closser, and trees give crf     
         elif ((to_process[1] == to_process[5]) & ('_' in str(to_process[1])) &
-              (to_process[1] == to_process[7])):
+              (to_process[1] == to_process[7]) &
+              (str(to_process[1]) != 'nan')):
             return ['rule_c7', to_process[1]]
         ## rules_p8: tree all agrees tree pure, and closser    
-        elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7])):
+        elif ((to_process[1] == to_process[3]) &
+              (to_process[1] == to_process[7]) & (str(to_process[1]) != 'nan')):
             return ['rule_p8', to_process[1]]
         ## rules_u1: remaining cases are an URF     
         else:
@@ -246,12 +253,13 @@ def make_decision(idx, df):
     # no evidence of recomb
     ## rule_p9: pure and all trees agree
     elif ((to_process[1] == to_process[3]) &
-         (to_process[4] >=0.7) & (to_process[2] >=0.7)):
+         (to_process[4] >=0.7) & (to_process[2] >=0.7) &
+         (str(to_process[1]) != 'nan')):
          return ['rule_p9', to_process[1]]
       
     # final, deal with problems of missing data
     ## rule_f1: if recomb res mssing output closser sed result
-    elif ((str(to_process[0]) == 'nan') & (str(to_process[7]) != 'nan')):
+    elif ((str(to_process[0]) == '') & (str(to_process[7]) != 'nan')):
         return ['rule_f1', to_process[7]]
     ## rule_f2: if recomb res and closser outputs misisng and trees agree give trees result
     elif ((str(to_process[0]) == 'nan') & (str(to_process[7]) == 'nan')):
@@ -320,7 +328,6 @@ if __name__ == '__main__':
     df_report.columns = ['id', 'recomb_result', 'node_all_refs', 's_node_all_refs',
                       'node_pure_refs', 's_node_pure_refs', 'node_recomb_refs',
                       's_node_recomb_refs', 'closser_ref']
-
 
     
     to_make_decision = df_report.set_index(['id']).copy()
