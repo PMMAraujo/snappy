@@ -7,7 +7,8 @@
 Welcome to snappy's documentation!
 ==================================
 
------------
+SNAPPy's code can be found `here <https://github.com/PMMAraujo/snappy>`_ 
+-------------------------------------------------------------------------
 
 .. toctree::
    :hidden:
