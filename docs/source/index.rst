@@ -10,6 +10,7 @@ Welcome to snappy's documentation!
    :hidden:
    :maxdepth: 2
 
+   :ref:`what`
    installation
    tutorials
    usage
@@ -17,7 +18,7 @@ Welcome to snappy's documentation!
    faq
    license
    
-   
+.. _what:   
 What is SNAPPy
 ^^^^^^^^^^^^^^
 
