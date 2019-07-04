@@ -19,6 +19,7 @@ Welcome to snappy's documentation!
    usage
    how_it_works
    faq
+   cite
    license
  
 
