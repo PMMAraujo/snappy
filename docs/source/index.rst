@@ -24,7 +24,8 @@ Welcome to snappy's documentation!
  
 
    
-**SNAPPy's code can be found `here <https://github.com/PMMAraujo/snappy>`_ .**
+SNAPPy's code can be found `here <https://github.com/PMMAraujo/snappy>`_ 
+
 
 
 **What is SNAPPy**
@@ -36,30 +37,30 @@ SNAPPy is a Snakemake pipeline for HIV-1 subtyping by phylogenetic pairing. It w
 **Getting Started**
 
 
-Installation:
+* Installation:
 
-:ref:`quick`
+   * :ref:`quick`
 
-:ref:`point-by-point`
+   * :ref:`point-by-point`
 
-Tutorials:
+* Tutorials:
 
-:ref:`tut1`
+   * :ref:`tut1`
 
-:ref:`tut2`
+   * :ref:`tut2`
 
-:ref:`tut3`
+   * :ref:`tut3`
 
-Commands list:
+* Commands list:
 
-:ref:`usage`
+   * :ref:`usage`
 
 
 **Support**
 
-- The software is provided "as is", without warranty of any kind, we do our best to keep it updated and bug free
-- :ref:`faq`
-- For additional information please contact: INFO (MAIL) 
+ * The software is provided "as is", without warranty of any kind, we do our best to keep it updated and bug free
+ *  :ref:`faq`
+ * For additional information please contact: INFO (MAIL) 
 
 
 **How to Cite**
