@@ -8,6 +8,9 @@ Welcome to snappy's documentation!
 ==================================
 
 
+---------------------------------------------------------------------------
+
+
 .. toctree::
    :hidden:
    :maxdepth: 1
@@ -30,8 +33,6 @@ Welcome to snappy's documentation!
 **SNAPPy's code can be found `here <https://github.com/PMMAraujo/snappy>`_ .**
 
 
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
    
 What is SNAPPy
