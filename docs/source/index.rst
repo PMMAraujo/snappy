@@ -61,6 +61,6 @@ Commands list:
 - For additional information please contact: INFO (MAIL) 
 
 
-**Citation**
+**How to Cite**
 
 text
