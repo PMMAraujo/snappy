@@ -8,10 +8,11 @@ Welcome to snappy's documentation!
 ==================================
 
 
+---------------------------------
+
 .. toctree::
    :hidden:
    :maxdepth: 2
-   :titlesonly:
    
    what
    installation
