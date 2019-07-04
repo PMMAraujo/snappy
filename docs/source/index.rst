@@ -8,11 +8,6 @@ Welcome to snappy's documentation!
 ==================================
 
 
-=======
-
-
-.......
-
 
 .. toctree::
    :hidden:
@@ -25,6 +20,7 @@ Welcome to snappy's documentation!
    how_it_works
    faq
    license
+      
       
 What is SNAPPy
 --------------
