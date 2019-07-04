@@ -22,8 +22,8 @@ Welcome to snappy's documentation!
    license
    
    
-SNAPPy's code can be found `here <https://github.com/PMMAraujo/snappy>`_ 
--------------------------------------------------------------------------
+**SNAPPy's code can be found `here <https://github.com/PMMAraujo/snappy>`_**
+
 
       
 What is SNAPPy
@@ -55,7 +55,7 @@ Getting Started
 
 
 Support
-~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 - The software is provided "as is", without warranty of any kind, we do our best to keep it updated and bug free
 - :ref:`faq`
@@ -63,6 +63,6 @@ Support
 
 
 Citation
---------
+~~~~~~~~~~~~~~~~~~
 
 text
