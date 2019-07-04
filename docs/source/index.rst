@@ -10,7 +10,7 @@ Welcome to snappy's documentation!
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 1
    :titlesonly:
    
    what
