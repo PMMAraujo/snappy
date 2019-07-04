@@ -176,4 +176,15 @@ if __name__ == '__main__':
     else:
         pass
 
-    tree_maker(args.input, NAME)
+    is_empty = str(list(SeqIO.parse(args.input, 'fasta'))[0].seq).replace('-', '')
+    if is_empty == '': # deal with empty fastas after alignment
+        with open('blast/blast_{0}.txt'.format(NAME), "w") as out_b:
+            out_b.write('not enough genomic information\n')
+        with open("trees/all_{0}.nwk".format(NAME), "w") as out_t:
+            out_t.write('not enough genomic information\n')
+        with open("trees/pure_{0}.nwk".format(NAME), "w") as out_t:
+            out_t.write('not enough genomic information\n')
+        with open("trees/recomb_{0}.nwk".format(NAME), "w") as out_t:
+            out_t.write('not enough genomic information\n')
+    else: # process sequences normaly
+        tree_maker(args.input, NAME)
