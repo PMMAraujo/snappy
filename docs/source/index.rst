@@ -10,6 +10,7 @@ Welcome to snappy's documentation!
    :hidden:
    :maxdepth: 2
 
+   index
    installation
    tutorials
    usage
