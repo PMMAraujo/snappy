@@ -7,7 +7,17 @@
 Welcome to snappy's documentation!
 ==================================
 
-
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   
+   what
+   installation
+   tutorials
+   usage
+   how_it_works
+   faq
+   license
       
 What is SNAPPy
 ##############
@@ -16,16 +26,7 @@ SNAPPy is a Snakemake pipeline for HIV-1 subtyping by phylogenetic pairing. It w
 
 
 
-.. toctree::
-   :hidden:
-   :maxdepth: 1
 
-   installation
-   tutorials
-   usage
-   how_it_works
-   faq
-   license
 
 Getting Started
 ###############
