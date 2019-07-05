@@ -57,7 +57,7 @@ SNAPPy is a Snakemake pipeline for HIV-1 subtyping by phylogenetic pairing. It w
 text
 
 
-
+Manual
 -----------
 
 
