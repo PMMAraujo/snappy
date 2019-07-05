@@ -10,8 +10,6 @@ Welcome to snappy's documentation!
 
 
  
-Quick Links
------------
    
 SNAPPy's code can be found `here <https://github.com/PMMAraujo/snappy>`_ 
 
@@ -55,10 +53,6 @@ SNAPPy is a Snakemake pipeline for HIV-1 subtyping by phylogenetic pairing. It w
 **How to Cite**
 
 text
-
-
-Manual
------------
 
 
 
