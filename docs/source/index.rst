@@ -61,7 +61,6 @@ text
    :maxdepth: 2
    :titlesonly:
    
-   what
    installation
    tutorials
    usage
