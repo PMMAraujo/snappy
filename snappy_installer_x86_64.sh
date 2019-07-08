@@ -1,19 +1,25 @@
 #!/bin/bash
 
+# download miniconda3 version 4.6.14 from repository
 wget https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh -O ./miniconda.sh
+# run miniconda instalation script
 bash ./miniconda.sh -b -p $HOME/miniconda
 
-export PATH="$HOME/miniconda/bin:$PATH"
+# add conda path to available in this session
+source ~/miniconda/etc/profile.d/conda.sh
 
-echo -e '\n# added by SNAPPy to run miniconda' >> ~/.bashrc
-
+# initiate conda and add the path to bash
 conda init
+
+# create snappy environment
 conda-env create -f environment.yaml
 
-source /conda/etc/profile.d/conda.sh
+# activate snappy environment
 conda activate snappy
+
+# run tests to ensure instalation is correct
 py.test
 
-#conda activate test_subtyper
-
+# instruction in how to future use snappy
+echo ""
 echo "Please open a new terminal and activate de environment: 'conda activate snappy'"

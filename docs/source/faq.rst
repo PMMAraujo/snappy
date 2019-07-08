@@ -10,7 +10,7 @@ A: Do you want to do HIV-1 subtyping/alignment in large numbers? Do you have to 
 
 **Q: "Can SNAPPy run on a windows machine?**
 
-A: In theory it is possible to run SNAPPy on a windows machine using the `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_ , however at the moment we do not provide any support for this and if you decide to do so do it at your own risk. The main reason SNAPPy was build for Linux based systems is that is has dependencies that only work on these operating systems. We are considering options to make SNAPPy operative systems agnostic in future releases.
+A: In theory it is possible to run SNAPPy on a windows machine using the `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_ , however at the moment we do not provide any support for this and if you decide to do so do it at your own risk. The main reason SNAPPy was build for Linux based systems is that it has dependencies that only work on these operating systems. We are considering options to make SNAPPy operative systems agnostic in future releases.
 
 
 **Q: "Is there any graphical user interface to use SNAPPy?**
@@ -23,13 +23,13 @@ A: We decided to use BLAST for the first version of SNAPPy because it is reliabl
 
 **Q: "Why using FastTree in SNAPPy?**
 
-A: After testing several phylogenetic tools we acknowledged that FasTree had the best ratio between phylogenetic inference quality and computational time. Moreover, FastTree has all the characteristics needed for the  phylogenetic inference software for this version of SNAPPy. This decision does not restrict the usage of other tools/software in future versions of SNAPPy. 
+A: After testing several phylogenetic tools we acknowledged that FasTree had the best ratio between phylogenetic inference quality and computational time. Moreover, FastTree has all the characteristics needed for the phylogenetic inference software for this version of SNAPPy. This decision does not restrict the usage of other tools/software in future versions of SNAPPy. 
 
 **Q: "I used SNAPPy to subtype 100k sequences and the outputs are occupying a lot of disk space (several dozens gigabytes), is it normal?**
 
-A: Please keep in mind that SNAPPy is a complex pipeline and performs several analysis. Each of those generates outputs. Everything is multiplied by the number of inputs, even if each input occupies an almost negligible amount of disk space the sum of all of them will result in a large value. At the end of each run SNAPPy automatically deletes  an hidden folder created by Snakemake named '.snakemake', this folder is extremely large and its deletion will save some space ( do not delete if the pipeline is still being executed). 
+A: Please keep in mind that SNAPPy is a complex pipeline and performs several analysis. Each of those generate outputs. Everything is multiplied by the number of inputs, even if each input occupies an almost negligible amount of disk space the sum of all of them will result in a large value. At the end of each run SNAPPy automatically deletes an hidden folder created by Snakemake named '.snakemake', this folder is extremely large and its deletion will save some space ( do not delete it if the pipeline is still being executed). 
 
 
 **Q: "Why can I not put several FASTA files inside the input folder?**
 
-A: This was a development decision. This may change in the future but for the current SNAPPy version we believe thats the best option for both the user and the pipeline. 
+A: This was a development decision. This may change in the future but for the current SNAPPy version we believe that is the best option for both the user and the pipeline. 

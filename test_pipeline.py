@@ -135,12 +135,12 @@ def test_tree_maker():
 
 
 # Test blast_recomb
-## Tests sub_aligns
-def test_sub_aligns():
+## Tests do_sub_aligns
+def test_do_sub_aligns():
     inputs = [x for x in os.listdir('aligned') if 'aligned' in x]
     for file in inputs:
         NAME = str(f'aligned/{file}').replace('aligned/aligned_' ,'').replace('.fasta', '')
-        sub_aligns(f'aligned/{file}', NAME)
+        do_sub_aligns(f'aligned/{file}', NAME)
 
     expected_output = ['sub_2.fasta', 'sub_3.fasta', 'sub_1.fasta']
     real_output = [x for x in os.listdir('blast') if 'sub' in x]

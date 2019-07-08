@@ -9,7 +9,7 @@ def process_blast_recomb(name):
     This function parses the results from the slidding window BLAST
     ('recblast_{id_of_the_fasta_sequence}.txt'), filters the top results,
     divide the results by bins (of 50 nucleotides), and outputs the majority
-    rule result for r«each been. Finaly an output for the given sequence is
+    rule result for each bin. Finaly an output for the given sequence is
     returned, if there is multiple results they are separated by '/'.
 
 
@@ -62,7 +62,7 @@ def process_blast_recomb(name):
     most_comon_in_array = [Counter([i for i in x if i != '-']).most_common(1) for x in np.array(as_array).T]
     
     pass_res = [x[0] for x in most_comon_in_array if len(x) == 1]
-    final = list(set([x[0] for x in pass_res if x[1] > 4]))
+    final = sorted(list(set([x[0] for x in pass_res if x[1] > 4])))
     
     return [name_out, ["/".join(final)]]
 
@@ -85,27 +85,34 @@ def process_trees(tree):
 	"""
     name_target = tree[:-4].replace('trees/all_', '').replace('trees/pure_', '').replace('trees/recomb_', '')
 
-    t = Phylo.read(tree, 'newick')
-    t.root_with_outgroup('CONSENSUS_CPZ')
-    t.ladderize()
+    with open(tree, 'r') as check_tree:
+        tree_txt = check_tree.read() 
 
-    nodes_with_target = t.get_path(name_target)
+    if (tree_txt == 'not enough genomic information\n'):  
+        return [name_target, np.NaN, 0]
 
-    result = []
-    for node in nodes_with_target:
-        in_node = list(set([i.name.split('-')[0] for i in node.get_terminals() if i.name != name_target]))
-        if len(in_node) == 1:
-            result = [name_target, in_node[0], node.confidence]
-            break
+    else:
+        t = Phylo.read(tree, 'newick')
+        t.root_with_outgroup('CONSENSUS_CPZ')
+        t.ladderize()
+
+        nodes_with_target = t.get_path(name_target)
+
+        result = []
+        for node in nodes_with_target:
+            in_node = list(set([i.name.split('-')[0] for i in node.get_terminals() if i.name != name_target]))
+            if len(in_node) == 1:
+                result = [name_target, in_node[0], node.confidence]
+                break
+            else:
+                pass
+            
+        if result == []:
+            result = [name_target, np.NaN, 0]
         else:
             pass
         
-    if result == []:
-        result = [name_target, np.NaN, 0]
-    else:
-        pass
-    
-    return result
+        return result
 
 
 def get_clossest_blast(blast_res):
@@ -124,20 +131,26 @@ def get_clossest_blast(blast_res):
 	"""
     name_out = blast_res.replace('blast/blast_', '').replace('.txt', '')
 
-    df = pd.read_csv(blast_res)
-    df.columns = [0,1,2,3]
+    with open(blast_res,'r') as check_blast:
+        blast_txt = check_blast.read()
 
-    filter_df = df.sort_values(by=[3], ascending=False).copy()
-
-    best_score = filter_df[3].values[0]
-
-    refs_best_score = filter_df[filter_df[3] == best_score][1].values
-    subs_best = list(set([x.split('-')[0] for x in refs_best_score]))
-
-    if len(subs_best) == 1:
-        return [name_out, subs_best[0]]
-    else:
+    if (blast_txt == 'not enough genomic information\n'):
         return [name_out, np.NaN]
+    else:
+        df = pd.read_csv(blast_res)
+        df.columns = [0,1,2,3]
+
+        filter_df = df.sort_values(by=[3], ascending=False).copy()
+
+        best_score = filter_df[3].values[0]
+
+        refs_best_score = filter_df[filter_df[3] == best_score][1].values
+        subs_best = list(set([x.split('-')[0] for x in refs_best_score]))
+
+        if len(subs_best) == 1:
+            return [name_out, subs_best[0]]
+        else:
+            return [name_out, np.NaN]
 
 def make_decision(idx, df):
     """Create final result based on all analysis 
@@ -205,18 +218,21 @@ def make_decision(idx, df):
     ## rules_c4: tree all agrees tree recomb, and their result is a crf
     elif ((to_process[8] == 2)):
         if ((to_process[1] == to_process[5]) & (to_process[2] >= 0.7) &
-            (to_process[6] >= 0.7) & ('_' in str(to_process[1]))):
+            (to_process[6] >= 0.7) & ('_' in str(to_process[1])) &
+            (str(to_process[1]) != 'nan')):
             return ['rule_c4', to_process[1]]
         ## rules_p5: tree all agrees tree pure, and closser, great support for 1 tree
         elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7]) &
-              ((to_process[2] >= 0.9) | (to_process[4] >=0.9))):
+              ((to_process[2] >= 0.9) | (to_process[4] >=0.9)) &
+              (str(to_process[1]) != 'nan')):
             return ['rule_p5', to_process[1]]
         ## rules_c5: tree all agrees tree recomb, and closser, and trees give crf  
         elif ((to_process[1] == to_process[5]) & ('_' in str(to_process[1])) &
-              (to_process[1] == to_process[7])):
+              (to_process[1] == to_process[7]) & (str(to_process[1]) != 'nan')):
             return ['rule_c5', to_process[1]]
         ## rules_p6: tree all agrees tree pure, and closser
-        elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7])):
+        elif ((to_process[1] == to_process[3]) &
+             (to_process[1] == to_process[7]) & (str(to_process[1]) != 'nan')):
             return ['rule_p6', to_process[1]]
         ## rules_u1: remaining cases are an complex URF       
         else:     
@@ -226,18 +242,22 @@ def make_decision(idx, df):
     ## rules_c6: tree all agrees tree recomb, and their result is a crf
     elif ((to_process[8] == 1)):
         if ((to_process[1] == to_process[5]) & (to_process[2] >= 0.7) &
-            (to_process[6] >= 0.7) & ('_' in str(to_process[1]))):
+            (to_process[6] >= 0.7) & ('_' in str(to_process[1])) &
+            (str(to_process[1]) != 'nan')):
             return ['rule_c6', to_process[1]]
         ## rules_p7: tree all agrees tree pure, and closser, great support for 1 tree
         elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7]) &
-              ((to_process[2] >= 0.9) | (to_process[4] >=0.9))):
+              ((to_process[2] >= 0.9) | (to_process[4] >=0.9)) &
+              (str(to_process[1]) != 'nan')):
             return ['rule_p7', to_process[1]]
         ## rules_c7: tree all agrees tree recomb, and closser, and trees give crf     
         elif ((to_process[1] == to_process[5]) & ('_' in str(to_process[1])) &
-              (to_process[1] == to_process[7])):
+              (to_process[1] == to_process[7]) &
+              (str(to_process[1]) != 'nan')):
             return ['rule_c7', to_process[1]]
         ## rules_p8: tree all agrees tree pure, and closser    
-        elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7])):
+        elif ((to_process[1] == to_process[3]) &
+              (to_process[1] == to_process[7]) & (str(to_process[1]) != 'nan')):
             return ['rule_p8', to_process[1]]
         ## rules_u1: remaining cases are an URF     
         else:
@@ -246,15 +266,18 @@ def make_decision(idx, df):
     # no evidence of recomb
     ## rule_p9: pure and all trees agree
     elif ((to_process[1] == to_process[3]) &
-         (to_process[4] >=0.7) & (to_process[2] >=0.7)):
+         (to_process[4] >=0.7) & (to_process[2] >=0.7) &
+         (str(to_process[1]) != 'nan')):
          return ['rule_p9', to_process[1]]
       
     # final, deal with problems of missing data
-    ## rule_f1: if recomb res mssing output closser sed result
-    elif ((str(to_process[0]) == 'nan') & (str(to_process[7]) != 'nan')):
+    ## rule_f1: if recomb res mssing output and closser res not missing give closser result
+    elif (((str(to_process[0]) == '') | (str(to_process[0]) == 'nan')) &
+         ((str(to_process[7]) != 'nan') | (str(to_process[7]) != ''))):
         return ['rule_f1', to_process[7]]
     ## rule_f2: if recomb res and closser outputs misisng and trees agree give trees result
-    elif ((str(to_process[0]) == 'nan') & (str(to_process[7]) == 'nan')):
+    elif (((str(to_process[0]) == '') | (str(to_process[0]) == 'nan')) &
+         ((str(to_process[7]) == 'nan') | (str(to_process[7]) == ''))):
         if ((to_process[1] == to_process[3]) & (str(to_process[1]) != 'nan')):
             return ['rule_f2', to_process[1]]
         ## rule_f3: if recomb res and closser outputs misisng and trees agree give trees result
@@ -320,7 +343,6 @@ if __name__ == '__main__':
     df_report.columns = ['id', 'recomb_result', 'node_all_refs', 's_node_all_refs',
                       'node_pure_refs', 's_node_pure_refs', 'node_recomb_refs',
                       's_node_recomb_refs', 'closser_ref']
-
 
     
     to_make_decision = df_report.set_index(['id']).copy()
