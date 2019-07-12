@@ -77,7 +77,7 @@ def do_blast_window(target, NAME):
 
     subprocess.call(['blastn', '-db', './data/db_01-02_and_pures', '-query',
     '{0}'.format(to_blast), '-out', 'blast/recblast_{0}.txt'.format(NAME),
-    '-word_size', '10', '-outfmt', '10', '-evalue', '1.e-100'])
+    '-word_size', '30', '-outfmt', '10', '-evalue', '1.e-50'])
 
     df = pd.read_csv(f'blast/recblast_{NAME}.txt', header=None)
     df[[0,1,10,11]].to_csv(f'blast/recblast_{NAME}.txt', index=False)        
