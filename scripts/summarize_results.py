@@ -21,50 +21,57 @@ def process_blast_recomb(name):
 	"""
     name_out = name[:-4].replace('blast/recblast_', '')
 
-    try:
-        df = pd.read_csv(name, header=None)
-        df = df[df[2] < 0.1e-105].copy()
-    except:
+    with open(name, 'r') as check_file:
+        file_txt = check_file.read() 
+
+    if (file_txt == 'failed recombination BLAST\n'):  
         return [name_out, [np.NaN]]
-    
-    dif_splits = df[0].unique()
-    as_array = []
 
-    for split in dif_splits:
-        position = int(split.split('_')[-1])
-
-        result = list(int(position / 50) * '-')
-        
-        split_df = df[df[0] == split]
-
-        split_df = split_df.sort_values(by=[3], ascending=False)
-
+    else:
         try:
-            best_score = split_df[3].values[0]
-            refs_best_score = split_df[split_df[3] == best_score][1].values
-            subs_best = list(set([x.split('-')[0] for x in refs_best_score]))
-
-            if len(subs_best) == 1:
-                 subtype = subs_best[0]
-            else:
-                subtype = '-'
-
-            result += [subtype] * 8
-            
+            df = pd.read_csv(name, header=None)
+            df = df[df[2] < 0.1e-105].copy()
         except:
-            pass
+            return [name_out, [np.NaN]]
+		
+        dif_splits = df[0].unique()
+        as_array = []
 
-        bins_number = (int(dif_splits[-1].split('_')[-1]) + 400) / 50
-        result += list('-' * int(bins_number - len(result)))
+        for split in dif_splits:
+            position = int(split.split('_')[-1])
 
-        as_array.append(np.array(result)) 
+            result = list(int(position / 50) * '-')
+		    
+            split_df = df[df[0] == split]
 
-    most_comon_in_array = [Counter([i for i in x if i != '-']).most_common(1) for x in np.array(as_array).T]
-    
-    pass_res = [x[0] for x in most_comon_in_array if len(x) == 1]
-    final = sorted(list(set([x[0] for x in pass_res if x[1] > 4])))
-    
-    return [name_out, ["/".join(final)]]
+            split_df = split_df.sort_values(by=[3], ascending=False)
+
+            try:
+                best_score = split_df[3].values[0]
+                refs_best_score = split_df[split_df[3] == best_score][1].values
+                subs_best = list(set([x.split('-')[0] for x in refs_best_score]))
+
+                if len(subs_best) == 1:
+                    subtype = subs_best[0]
+                else:
+                    subtype = '-'
+
+                result += [subtype] * 8
+		        
+            except:
+                pass
+
+            bins_number = (int(dif_splits[-1].split('_')[-1]) + 400) / 50
+            result += list('-' * int(bins_number - len(result)))
+
+            as_array.append(np.array(result)) 
+
+        most_comon_in_array = [Counter([i for i in x if i != '-']).most_common(1) for x in np.array(as_array).T]
+		
+        pass_res = [x[0] for x in most_comon_in_array if len(x) == 1]
+        final = sorted(list(set([x[0] for x in pass_res if x[1] > 4])))
+		
+        return [name_out, ["/".join(final)]]
 
 
 

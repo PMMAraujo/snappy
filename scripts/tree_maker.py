@@ -29,13 +29,13 @@ def blast_closser(file_name, NAME):
     notation: aligned_{id_of_the_fasta_sequence}.fasta. This function is called
     by the function 'build_msas'.
 
-	Args:
+    Args:
         file_name (fasta): Fasta file containing 1 fasta sequence aligned.
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
-	Returns:
+    Returns:
         List of lists of reference sequences names.
-	"""
+    """
     out_nogap = open('blast/nogap_{0}.fasta'.format(NAME), "w")
     subprocess.call(['sed', '-e', 's/-//g', '{0}'.format(file_name)], stdout=out_nogap)
 
@@ -70,13 +70,13 @@ def build_msas(file_name, NAME):
     This function calls the functions 'blast_closser' and 'specify_type_msas' 
     and is called by the function 'tree_maker'.
 
-	Args:
+    Args:
         file_name (fasta): Fasta file containing 1 fasta sequence aligned.
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
-	Returns:
+    Returns:
         This function does not return.
-	"""
+    """
     closser_data = blast_closser(file_name, NAME)
     target = [np.array([x.id] + list(str(x.seq))) for x in SeqIO.parse(f'{file_name}', 'fasta')][0]
     mask_gaps = target != '-'
@@ -98,7 +98,7 @@ def specify_type_msas(col, name, target, mask_gaps, closser_data, NAME):
     msa_{type}_{id_of_the_fasta_sequence}.fasta. Type can take the any string
     but only 'all, 'pure', and 'recomb' are used.
 
-	Args:
+    Args:
         col (int): Number of the column where the list of selected referes is.
         name (str): Can take the any string but only 'all, 'pure', and 'recomb'
         are used.
@@ -107,22 +107,26 @@ def specify_type_msas(col, name, target, mask_gaps, closser_data, NAME):
         closser_data (list): Output from the blast_closser function.
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
-	Returns:
+    Returns:
         This function does not return.
-	"""
+    """
     msa_idx = closser_data[col]
     closser_seqs = np.array([x for x in ALL_REFS if x[0] in msa_idx])
 
-    masked_target = target[mask_gaps]
-    masked_root = np.array(OUT_CPZ)[mask_gaps].copy()
-    masked_refs = closser_seqs[:, mask_gaps].copy()
- 
-    with open(f'trees/msa_{name}_{NAME}.fasta', 'w') as out_fasta:
-        for seq in masked_refs:
-            out_fasta.write(f'>{seq[0]}\n{"".join(seq[1:])}\n')
-                            
-        out_fasta.write(f'>{masked_target[0]}\n{"".join(masked_target[1:])}\n')
-        out_fasta.write(f'>{masked_root[0]}\n{"".join(masked_root[1:])}\n')
+    try:
+        masked_target = target[mask_gaps]
+        masked_root = np.array(OUT_CPZ)[mask_gaps].copy()
+        masked_refs = closser_seqs[:, mask_gaps].copy()
+
+        with open(f'trees/msa_{name}_{NAME}.fasta', 'w') as out_fasta:
+            for seq in masked_refs:
+                out_fasta.write(f'>{seq[0]}\n{"".join(seq[1:])}\n')
+                                
+            out_fasta.write(f'>{masked_target[0]}\n{"".join(masked_target[1:])}\n')
+            out_fasta.write(f'>{masked_root[0]}\n{"".join(masked_root[1:])}\n')
+    except:
+        with open(f'trees/msa_{name}_{NAME}.fasta', 'w') as out_fasta:
+            out_fasta.write('not enough genomic information\n')    
 
 def tree_maker(file_name, NAME):
     """Phylogenetic inference
@@ -135,29 +139,54 @@ def tree_maker(file_name, NAME):
     {type}_{id_of_the_fasta_sequence}.nwk. Type can take the any string
     but only 'all, 'pure', and 'recomb' are used.
 
-	Args:
+    Args:
         file_name (str): Name of the input fasta file.
         NAME (str): Global variable. Internal index of SNAPPy for this fasta.
 
-	Returns:
+    Returns:
         This function does not return.
-	"""
+    """
     build_msas(file_name, NAME)
 
-    out_all = open("trees/all_{0}.nwk".format(NAME), "w")
-    subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
-    'trees/msa_all_{0}.fasta'.format(NAME)], stdout=out_all, stderr=subprocess.STDOUT)
-    subprocess.call(['rm', 'trees/msa_all_{0}.fasta'.format(NAME)])
+    with open(f'trees/msa_all_{NAME}.fasta', 'r') as check_msa:
+        all_msa = check_msa.read()
 
-    out_pure = open("trees/pure_{0}.nwk".format(NAME), "w")
-    subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
-    'trees/msa_pure_{0}.fasta'.format(NAME)], stdout=out_pure, stderr=subprocess.STDOUT)
-    subprocess.call(['rm', 'trees/msa_pure_{0}.fasta'.format(NAME)])
+    with open(f'trees/msa_pure_{NAME}.fasta', 'r') as check_msa:
+        pure_msa = check_msa.read()
 
-    out_recomb = open("trees/recomb_{0}.nwk".format(NAME), "w")
-    subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
-    'trees/msa_recomb_{0}.fasta'.format(NAME)], stdout=out_recomb, stderr=subprocess.STDOUT)
-    subprocess.call(['rm', 'trees/msa_recomb_{0}.fasta'.format(NAME)])
+    with open(f'trees/msa_recomb_{NAME}.fasta', 'r') as check_msa:
+        rec_msa = check_msa.read() 
+
+    if (all_msa == 'not enough genomic information\n'):  
+        with open("trees/all_{0}.nwk".format(NAME), "w") as out_t:
+            out_t.write('not enough genomic information\n')
+
+    else:
+        out_all = open("trees/all_{0}.nwk".format(NAME), "w")
+        subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
+        'trees/msa_all_{0}.fasta'.format(NAME)], stdout=out_all, stderr=subprocess.STDOUT)
+        subprocess.call(['rm', 'trees/msa_all_{0}.fasta'.format(NAME)])
+
+    if (pure_msa == 'not enough genomic information\n'):  
+        with open("trees/pure_{0}.nwk".format(NAME), "w") as out_t:
+            out_t.write('not enough genomic information\n')
+
+    else:
+        out_pure = open("trees/pure_{0}.nwk".format(NAME), "w")
+        subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
+        'trees/msa_pure_{0}.fasta'.format(NAME)], stdout=out_pure, stderr=subprocess.STDOUT)
+        subprocess.call(['rm', 'trees/msa_pure_{0}.fasta'.format(NAME)])
+
+
+    if (rec_msa == 'not enough genomic information\n'):  
+        with open("trees/recomb_{0}.nwk".format(NAME), "w") as out_t:
+            out_t.write('not enough genomic information\n')
+    else:
+        out_recomb = open("trees/recomb_{0}.nwk".format(NAME), "w")
+        subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
+        'trees/msa_recomb_{0}.fasta'.format(NAME)], stdout=out_recomb, stderr=subprocess.STDOUT)
+        subprocess.call(['rm', 'trees/msa_recomb_{0}.fasta'.format(NAME)])
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
