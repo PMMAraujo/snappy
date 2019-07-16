@@ -205,7 +205,7 @@ def get_clossest_blast():
 ## Tests
 def test_delete_all_outputs():
     FOLDERS = ['trees','aligned','blast']
-    FILES = ['subtype_results.csv', 'report_subtype_results.csv.csv',
+    FILES = ['keys_and_ids.csv','subtype_results.csv', 'report_subtype_results.csv.csv',
     'all_aligned.fasta']
     for folder in FOLDERS:
         cleaner.clean_folders(folder)

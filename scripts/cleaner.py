@@ -3,8 +3,8 @@ import argparse
 import subprocess
 
 FOLDERS = ['trees','aligned','blast']
-FILES = ['subtype_results.csv', 'report_subtype_results.csv',
-         'all_aligned.fasta']
+FILES = ['keys_and_ids.csv', 'subtype_results.csv',
+         'report_subtype_results.csv', 'all_aligned.fasta']
 
 def clean_folders(path):
     """Folder cleaner.
