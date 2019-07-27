@@ -59,6 +59,10 @@ def blast_closser(file_name, NAME):
         
     except:
         print(f'ERROR while performing BLAST of {NAME}')
+
+        with open(f'blast/blast_{NAME}.txt', 'w') as out_blast:
+            out_blast.write('not enough genomic information\n')
+
         return [NAME, [], [], []]
         
 

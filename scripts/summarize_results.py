@@ -143,6 +143,7 @@ def get_clossest_blast(blast_res):
 
     if (blast_txt == 'not enough genomic information\n'):
         return [name_out, np.NaN]
+
     else:
         df = pd.read_csv(blast_res)
         df.columns = [0,1,2,3]
@@ -280,7 +281,7 @@ def make_decision(idx, df):
     # final, deal with problems of missing data
     ## rule_f1: if recomb res mssing output and closser res not missing give closser result
     elif (((str(to_process[0]) == '') | (str(to_process[0]) == 'nan')) &
-         ((str(to_process[7]) != 'nan') | (str(to_process[7]) != ''))):
+         (~(str(to_process[7]) == 'nan') & ~(str(to_process[7]) == ''))):
         return ['rule_f1', to_process[7]]
     ## rule_f2: if recomb res and closser outputs misisng and trees agree give trees result
     elif (((str(to_process[0]) == '') | (str(to_process[0]) == 'nan')) &

@@ -79,8 +79,12 @@ def do_blast_window(target, NAME):
     '{0}'.format(to_blast), '-out', 'blast/recblast_{0}.txt'.format(NAME),
     '-word_size', '30', '-outfmt', '10', '-evalue', '1.e-50'])
 
-    df = pd.read_csv(f'blast/recblast_{NAME}.txt', header=None)
-    df[[0,1,10,11]].to_csv(f'blast/recblast_{NAME}.txt', index=False)        
+    try:
+        df = pd.read_csv(f'blast/recblast_{NAME}.txt', header=None)
+        df[[0,1,10,11]].to_csv(f'blast/recblast_{NAME}.txt', index=False)
+    except:
+        with open('blast/recblast_{0}.txt'.format(NAME), "w") as out_b:
+            out_b.write('not enough genomic information\n')             
 
     comand_rm = 'rm {0}'.format(to_blast)
     subprocess.call(comand_rm.split(' '))
