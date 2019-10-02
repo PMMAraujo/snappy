@@ -1,4 +1,4 @@
 id,name,result,recomb_result,node_all_refs,s_node_all_refs,node_pure_refs,s_node_pure_refs,node_recomb_refs,s_node_recomb_refs,closser_ref,rule
-0,test01,B,B,B,0.416,B,0.726,,0,B,rule_p1
-1,test02,B,B,B,0.416,B,0.726,,0,B,rule_p1
-2,test03,C,C,C,0.958,C,0.869,,0,C,rule_p1
+0,test01,B,B,B,99.8,B,99.9,90_BF1,87.8,B,rule_p1
+1,test02,B,B,B,99.8,B,99.9,90_BF1,87.8,B,rule_p1
+2,test03,C,C,C,96.4,C,99.8,87_cpx,58.5,C,rule_p1

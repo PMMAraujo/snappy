@@ -9,7 +9,7 @@ dependencies:
   - snakemake=5.3.0
   - mafft=7.245
   - biopython=1.71
-  - fasttree=2.1.10
   - blast=2.7.1
   - pytest=4.5.0
   - ete3=3.1.1
+  - iqtree=1.6.9
