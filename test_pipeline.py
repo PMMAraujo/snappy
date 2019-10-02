@@ -127,9 +127,9 @@ def test_tree_maker():
         NAME = str(f'aligned/{file}').replace('aligned/aligned_' ,'').replace('.fasta', '')
         tree_maker(f'aligned/{file}', NAME)
 
-    expected_output = ['pure_2.nwk', 'pure_1.nwk', 'all_2.nwk', 'recomb_3.nwk',
-    'all_1.nwk', 'recomb_2.nwk', 'all_3.nwk', 'pure_3.nwk', 'recomb_1.nwk']
-    real_output = [x for x in os.listdir('trees') if '.nwk' in x]
+    expected_output = ['pure_2.treefile', 'pure_1.treefile', 'all_2.treefile', 'recomb_3.treefile',
+    'all_1.treefile', 'recomb_2.treefile', 'all_3.treefile', 'pure_3.treefile', 'recomb_1.treefile']
+    real_output = [x for x in os.listdir('trees') if '.treefile' in x]
 
     assert sorted(real_output) == sorted(expected_output)
 
@@ -164,9 +164,9 @@ def test_do_blast_window():
 ## Tests
 def get_clossest_blast():
 
-    all_trees_inputs = [x for x in os.listdir('trees') if (x[-4:]  == '.nwk') & (x[:4] == 'all_')]
-    pure_trees_inputs = [x for x in os.listdir('trees') if (x[-4:]  == '.nwk') & (x[:5] == 'pure_')]
-    recomb_trees_inputs = [x for x in os.listdir('trees') if (x[-4:]  == '.nwk') & (x[:7] == 'recomb_')]
+    all_trees_inputs = [x for x in input_list if (x[-9:]  == '.treefile') & (x[:10] == 'trees/all_')]
+    pure_trees_inputs = [x for x in input_list if (x[-9:]  == '.treefile') & (x[:11] == 'trees/pure_')]
+    recomb_trees_inputs = [x for x in input_list if (x[-9:]  == '.treefile') & (x[:13] == 'trees/recomb_')]
     blast_c = [x for x in os.listdir('blast') if (x[-4:]  == '.txt') & (x[:6] == 'blast_')]
     blast_inputs = [x for x in os.listdir('blast') if (x[-4:]  == '.txt') & (x[:9] == 'recblast_')]
 

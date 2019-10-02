@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 from collections import Counter
-from Bio import Phylo
+#from Bio import Phylo
+from ete3 import Tree
 
 def process_blast_recomb(name):
     """Extract results from sliding window BLAST
@@ -90,7 +91,7 @@ def process_trees(tree):
 	Returns:
         List with two items: name and processed result.
 	"""
-    name_target = tree[:-4].replace('trees/all_', '').replace('trees/pure_', '').replace('trees/recomb_', '')
+    name_target = tree[:-9].replace('trees/all_', '').replace('trees/pure_', '').replace('trees/recomb_', '')
 
     with open(tree, 'r') as check_tree:
         tree_txt = check_tree.read() 
@@ -99,21 +100,19 @@ def process_trees(tree):
         return [name_target, np.NaN, 0]
 
     else:
-        t = Phylo.read(tree, 'newick')
-        t.root_with_outgroup('CONSENSUS_CPZ')
+        t = Tree(tree)
+        t.set_outgroup('CONSENSUS_CPZ')
         t.ladderize()
-
-        nodes_with_target = t.get_path(name_target)
+        target_node = t.search_nodes(name=name_target)[0]
 
         result = []
-        for node in nodes_with_target:
-            in_node = list(set([i.name.split('-')[0] for i in node.get_terminals() if i.name != name_target]))
-            if len(in_node) == 1:
-                result = [name_target, in_node[0], node.confidence]
+        for node in target_node.get_ancestors():
+            subtypes_in_node = [leaf.split('-')[0] for leaf in node.get_leaf_names() if leaf != name_target]
+            if len(set(subtypes_in_node)) == 1:
+                result = [name_target, subtypes_in_node[0], node.support]
                 break
             else:
-                pass
-            
+                pass  
         if result == []:
             result = [name_target, np.NaN, 0]
         else:
@@ -186,7 +185,7 @@ def make_decision(idx, df):
         return ['rule_p1', to_process[1]]
     ## rule_c1: all trees and recomb trees and closser ref agree plus recomb is simple 
     elif ((str(to_process[1]) != 'nan') & (to_process[1] == to_process[5]) &
-          (to_process[2] >= 0.7) & (to_process[6] >= 0.7) &
+          (to_process[2] >= 90.0 ) & (to_process[6] >= 90.0 ) &
           (to_process[8] == 1) & (to_process[1] == to_process[7]) &
           (str(to_process[1]) != 'nan')):
         return ['rule_c1', to_process[1]]
@@ -194,44 +193,44 @@ def make_decision(idx, df):
     # both trees plus 1 method agree
     ## rule_p2: tree pure agrees with tree all and recomb
     elif ((str(to_process[3]) != 'nan') & (to_process[3] == to_process[1]) &
-        (to_process[4] >=0.7) & (to_process[2] >=0.7) &
+        (to_process[4] >=90.0 ) & (to_process[2] >=90.0 ) &
         (to_process[3] == to_process[0])):
         return ['rule_p2', to_process[3]]
     ## rule_p3: tree pure agrees with tree all and closser
     elif ((str(to_process[3]) != 'nan') & (to_process[3] == to_process[1]) &
-        (to_process[4] >=0.7) & (to_process[2] >=0.7) &
+        (to_process[4] >=90.0 ) & (to_process[2] >=90.0 ) &
         (to_process[3] == to_process[7])):
         return ['rule_p3', to_process[3]]  
     ## rule_c2: tree recomb agrees with tree all and closser and there is recomb
     elif ((str(to_process[5]) != 'nan') & (to_process[5] == to_process[1]) &
-        (to_process[6] >=0.7) & (to_process[2] >=0.7) &
+        (to_process[6] >=90.0 ) & (to_process[2] >=90.0 ) &
         (to_process[5] == to_process[7])):
         return ['rule_c2', to_process[5]]
 
     # one tree plus recomb and closser
     ## rule_p4: tree pure agrees with recomb and closser
-    elif ((str(to_process[3]) != 'nan') & (to_process[4] >=0.9) & 
+    elif ((str(to_process[3]) != 'nan') & (to_process[4] >=95.0) & 
         (to_process[3] == to_process[0]) & (to_process[3] == to_process[7])):
         return ['rule_p4', to_process[3]]
     ## rule_c3: tree recomb agrees with closser and recomb is simple 
-    elif ((str(to_process[5]) != 'nan') & (to_process[6] >=0.9) & 
+    elif ((str(to_process[5]) != 'nan') & (to_process[6] >=95.0) & 
         (to_process[8] == 1) & (to_process[5] == to_process[7])):
         return ['rule_c3', to_process[5]]
     ## rule_b1: tree all agrees with recomb and closser
-    elif ((str(to_process[1]) != 'nan') & (to_process[2] >=0.9) & 
+    elif ((str(to_process[1]) != 'nan') & (to_process[2] >=95.0) & 
         (to_process[1] == to_process[0]) & (to_process[1] == to_process[7])):
         return ['rule_b1', to_process[1]]
     
     # ecomb gives complex
     ## rules_c4: tree all agrees tree recomb, and their result is a crf
     elif ((to_process[8] == 2)):
-        if ((to_process[1] == to_process[5]) & (to_process[2] >= 0.7) &
-            (to_process[6] >= 0.7) & ('_' in str(to_process[1])) &
+        if ((to_process[1] == to_process[5]) & (to_process[2] >= 90.0 ) &
+            (to_process[6] >= 90.0 ) & ('_' in str(to_process[1])) &
             (str(to_process[1]) != 'nan')):
             return ['rule_c4', to_process[1]]
         ## rules_p5: tree all agrees tree pure, and closser, great support for 1 tree
         elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7]) &
-              ((to_process[2] >= 0.9) | (to_process[4] >=0.9)) &
+              ((to_process[2] >= 95.0) | (to_process[4] >=95.0)) &
               (str(to_process[1]) != 'nan')):
             return ['rule_p5', to_process[1]]
         ## rules_c5: tree all agrees tree recomb, and closser, and trees give crf  
@@ -249,13 +248,13 @@ def make_decision(idx, df):
     # recomb gives simple
     ## rules_c6: tree all agrees tree recomb, and their result is a crf
     elif ((to_process[8] == 1)):
-        if ((to_process[1] == to_process[5]) & (to_process[2] >= 0.7) &
-            (to_process[6] >= 0.7) & ('_' in str(to_process[1])) &
+        if ((to_process[1] == to_process[5]) & (to_process[2] >= 90.0 ) &
+            (to_process[6] >= 90.0 ) & ('_' in str(to_process[1])) &
             (str(to_process[1]) != 'nan')):
             return ['rule_c6', to_process[1]]
         ## rules_p7: tree all agrees tree pure, and closser, great support for 1 tree
         elif ((to_process[1] == to_process[3]) & (to_process[1] == to_process[7]) &
-              ((to_process[2] >= 0.9) | (to_process[4] >=0.9)) &
+              ((to_process[2] >= 95.0) | (to_process[4] >=95.0)) &
               (str(to_process[1]) != 'nan')):
             return ['rule_p7', to_process[1]]
         ## rules_c7: tree all agrees tree recomb, and closser, and trees give crf     
@@ -274,7 +273,7 @@ def make_decision(idx, df):
     # no evidence of recomb
     ## rule_p9: pure and all trees agree
     elif ((to_process[1] == to_process[3]) &
-         (to_process[4] >=0.7) & (to_process[2] >=0.7) &
+         (to_process[4] >=90.0 ) & (to_process[2] >=90.0 ) &
          (str(to_process[1]) != 'nan')):
          return ['rule_p9', to_process[1]]
       
@@ -316,9 +315,9 @@ if __name__ == '__main__':
     keys = list(snakemake.params.k)
     ids = list(snakemake.params.i)
 
-    all_trees_inputs = [x for x in input_list if (x[-4:]  == '.nwk') & (x[:10] == 'trees/all_')]
-    pure_trees_inputs = [x for x in input_list if (x[-4:]  == '.nwk') & (x[:11] == 'trees/pure_')]
-    recomb_trees_inputs = [x for x in input_list if (x[-4:]  == '.nwk') & (x[:13] == 'trees/recomb_')]
+    all_trees_inputs = [x for x in input_list if (x[-9:]  == '.treefile') & (x[:10] == 'trees/all_')]
+    pure_trees_inputs = [x for x in input_list if (x[-9:]  == '.treefile') & (x[:11] == 'trees/pure_')]
+    recomb_trees_inputs = [x for x in input_list if (x[-9:]  == '.treefile') & (x[:13] == 'trees/recomb_')]
     blast_c = [x for x in input_list if (x[-4:]  == '.txt') & (x[:12] == 'blast/blast_')]
     blast_inputs = [x for x in input_list if (x[-4:]  == '.txt') & (x[:15] == 'blast/recblast_')]
 

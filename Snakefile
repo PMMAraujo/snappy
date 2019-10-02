@@ -30,9 +30,9 @@ print('Fasta file contains', len(IDS), 'sequences.')
 
 rule subtype_all:
     input:
-        trees_all=expand("trees/all_{sample}.nwk", sample=KEYS),
-        trees_pure=expand("trees/pure_{sample}.nwk", sample=KEYS),
-        trees_recomb=expand("trees/recomb_{sample}.nwk", sample=KEYS),
+        trees_all=expand("trees/all_{sample}.treefile", sample=KEYS),
+        trees_pure=expand("trees/pure_{sample}.treefile", sample=KEYS),
+        trees_recomb=expand("trees/recomb_{sample}.treefile", sample=KEYS),
         blast_c=expand("blast/blast_{sample}.txt", sample=KEYS),
         blast=expand("blast/recblast_{sample}.txt", sample=KEYS)
     output:
@@ -59,9 +59,9 @@ rule tree_maker:
     input:
         "aligned/aligned_{sample}.fasta"
     output:
-        "trees/all_{sample}.nwk",
-        "trees/pure_{sample}.nwk",
-        "trees/recomb_{sample}.nwk",
+        "trees/all_{sample}.treefile",
+        "trees/pure_{sample}.treefile",
+        "trees/recomb_{sample}.treefile",
         "blast/blast_{sample}.txt"
     priority:
         50

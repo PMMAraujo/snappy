@@ -3,6 +3,7 @@ channels:
   - bioconda
   - biocore
   - conda-forge
+  - etetoolkit
 dependencies:
   - python=3.6.7
   - snakemake=5.3.0
@@ -11,3 +12,4 @@ dependencies:
   - fasttree=2.1.10
   - blast=2.7.1
   - pytest=4.5.0
+  - ete3=3.1.1

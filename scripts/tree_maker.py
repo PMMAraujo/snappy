@@ -159,37 +159,41 @@ def tree_maker(file_name, NAME):
         pure_msa = check_msa.read()
 
     with open(f'trees/msa_recomb_{NAME}.fasta', 'r') as check_msa:
-        rec_msa = check_msa.read() 
+        rec_msa = check_msa.read()
+
 
     if (all_msa == 'not enough genomic information\n'):  
         with open("trees/all_{0}.nwk".format(NAME), "w") as out_t:
             out_t.write('not enough genomic information\n')
 
     else:
-        out_all = open("trees/all_{0}.nwk".format(NAME), "w")
-        subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
-        'trees/msa_all_{0}.fasta'.format(NAME)], stdout=out_all, stderr=subprocess.STDOUT)
-        subprocess.call(['rm', 'trees/msa_all_{0}.fasta'.format(NAME)])
+        tree_type = 'all'
+        run_iq =  'iqtree -s trees/msa_{0}_{1}.fasta -quiet -m GTR+F+G4 -fast -alrt 1000 -pre trees/{0}_{1} -seed 0'.format(tree_type, NAME)
+        subprocess.call(run_iq.split(' '))
+        clean = 'rm trees/{0}_{1}.bionj trees/{0}_{1}.ckp.gz trees/{0}_{1}.iqtree trees/{0}_{1}.log trees/{0}_{1}.mldist trees/msa_{0}_{1}.fasta'.format(tree_type, NAME)
+        subprocess.call(clean.split(' '))
 
     if (pure_msa == 'not enough genomic information\n'):  
         with open("trees/pure_{0}.nwk".format(NAME), "w") as out_t:
             out_t.write('not enough genomic information\n')
 
     else:
-        out_pure = open("trees/pure_{0}.nwk".format(NAME), "w")
-        subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
-        'trees/msa_pure_{0}.fasta'.format(NAME)], stdout=out_pure, stderr=subprocess.STDOUT)
-        subprocess.call(['rm', 'trees/msa_pure_{0}.fasta'.format(NAME)])
+        tree_type = 'pure'
+        run_iq =  'iqtree -s trees/msa_{0}_{1}.fasta -quiet -m GTR+F+G4 -fast -alrt 1000 -pre trees/{0}_{1} -seed 0'.format(tree_type, NAME)
+        subprocess.call(run_iq.split(' '))
+        clean = 'rm trees/{0}_{1}.bionj trees/{0}_{1}.ckp.gz trees/{0}_{1}.iqtree trees/{0}_{1}.log trees/{0}_{1}.mldist trees/msa_{0}_{1}.fasta'.format(tree_type, NAME)
+        subprocess.call(clean.split(' '))
 
 
     if (rec_msa == 'not enough genomic information\n'):  
         with open("trees/recomb_{0}.nwk".format(NAME), "w") as out_t:
             out_t.write('not enough genomic information\n')
     else:
-        out_recomb = open("trees/recomb_{0}.nwk".format(NAME), "w")
-        subprocess.call(['fasttree', '-quiet', '-gtr', '-nopr', '-nt',
-        'trees/msa_recomb_{0}.fasta'.format(NAME)], stdout=out_recomb, stderr=subprocess.STDOUT)
-        subprocess.call(['rm', 'trees/msa_recomb_{0}.fasta'.format(NAME)])
+        tree_type = 'recomb'
+        run_iq =  'iqtree -s trees/msa_{0}_{1}.fasta -quiet -m GTR+F+G4 -fast -alrt 1000 -pre trees/{0}_{1} -seed 0'.format(tree_type, NAME)
+        subprocess.call(run_iq.split(' '))
+        clean = 'rm trees/{0}_{1}.bionj trees/{0}_{1}.ckp.gz trees/{0}_{1}.iqtree trees/{0}_{1}.log trees/{0}_{1}.mldist trees/msa_{0}_{1}.fasta'.format(tree_type, NAME)
+        subprocess.call(clean.split(' '))
 
 
 if __name__ == '__main__':
