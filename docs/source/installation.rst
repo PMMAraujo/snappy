@@ -5,9 +5,7 @@ Installation
 
 This pipeline was build upon many dependencies and `Python <http://www.python.org/>`_ code. Therefore there was the need to use a package/environment manager. For this task we highly recommend `CONDA <https://docs.conda.io/en/latest/>`_ . The following installation instructions assume the user wants to install and use `CONDA <https://docs.conda.io/en/latest/>`_. If you already have any recent conda distribution on your system do not use the `Quick install Guide`_, as it will install `Miniconda <https://docs.conda.io/en/latest/miniconda.html>`_. If you do not which to use `CONDA <https://docs.conda.io/en/latest/>`_ please look at all the dependencies needed to use SNAPPy in the `'environment.yaml' file <https://github.com/PMMAraujo/snappy/blob/master/environment.yaml>`_.
 
- .. _quick:
-
-
+ .. _quick_l:
 
 Quick install Guide - Linux and Windows 10 ( With Windows subsystem for Linux)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -40,7 +38,7 @@ This task is time consuming and may take several minutes.
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
 
- .. _point-by-point:
+ .. _quick_m:
 
 Quick install Guide - macOS 10
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -73,8 +71,7 @@ This task is time consuming and may take several minutes.
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
 
- .. _point-by-point:
-
+ .. _point-by-point_l:
 
 Install point-by-point - Linux and Windows 10 ( With Windows subsystem for Linux)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,6 +120,7 @@ Note: It is not actually needed to add conda path to the bash path but it makes 
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
 
+ .. _point-by-point_m:
 
 Install point-by-point - macOS 10
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
