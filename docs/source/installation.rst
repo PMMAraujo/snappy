@@ -12,7 +12,7 @@ This pipeline was build upon many dependencies and `Python <http://www.python.or
 Quick install Guide - Linux and Windows 10 ( With Windows subsystem for Linux)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This instalation was test on Ubuntu 16 and 18 LTS as well as Windows 10 With ubuntu 18 terminal.
+This instalation was tested on Ubuntu 16 and 18 LTS as well as Windows 10 With ubuntu 18 terminal.
 Do not use this method if you already have conda installed on your computer.
 
 1) Download of clone SNAPPy from `here <https://github.com/PMMAraujo/snappy>`_ and put it in a desired location::
@@ -45,7 +45,7 @@ For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
 Quick install Guide - macOS 10
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This instalation was test on macOS 10.14 (Mojave).
+This instalation was tested on macOS 10.14 (Mojave).
 Do not use this method if you already have conda installed on your computer.
 
 1) Download of clone SNAPPy from `here <https://github.com/PMMAraujo/snappy>`_ and put it in a desired location::
@@ -80,7 +80,7 @@ Install point-by-point - Linux and Windows 10 ( With Windows subsystem for Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-This instalation was test on Ubuntu 16 and 18 LTS as well as Windows 10 With ubuntu 18 terminal.
+This instalation was tested on Ubuntu 16 and 18 LTS as well as Windows 10 With ubuntu 18 terminal.
 
 
 1) Open a terminal, download Miniconda3 version 4.6.14 and install it::
@@ -127,7 +127,7 @@ For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
 Install point-by-point - macOS 10
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This instalation was test on macOS 10.14 (Mojave).
+This instalation was tested on macOS 10.14 (Mojave).
 
 
 1) Open a terminal, download Miniconda3 version 4.6.14 and install it::
