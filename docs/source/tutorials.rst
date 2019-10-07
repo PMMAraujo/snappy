@@ -5,7 +5,7 @@ Tutorials
 
 Please ensure SNAPPy's installation was successful. If you need help regarding SNAPPy's installation please visit the :ref:`installation` section. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated::
 
-    conda actiavte snappy
+    conda activate snappy
  
 If the tool is stopping abruptly or behaving unexpectedly ensure it is functional by simply running the tests::
 
@@ -22,7 +22,7 @@ Disclaimer: This tutorial and Tutorial :ref:`tut2` share the first four steps.
 
 HIV-1 subtyping is the main reason SNAPPY was build. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated::
 
-    conda actiavte snappy
+    conda activate snappy
 
 We highly encourage to run the tests before using the pipeline just to make sure the tasks will run as intended and the pipeline was not modified or damaged::
 
@@ -128,10 +128,12 @@ That's it for this tutorial! If you now want to use SNAPPy on your own date don'
 
 Disclaimer: This tutorial and Tutorial :ref:`tut1` share the first four steps.
 
+To use SNAPPy the terminal always needs to be executed from the snappy folder on your machine!
+
 Althought SNAPPy was built for HIV-1 subtyping one of its intermediary tasks is alignment to the reference genome (`HXB2 (K03455) <https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455>`_). Since SNAPPy is built based on `Snakemake <https://snakemake.readthedocs.io/en/stable/index.html>`_ we can call intermediary tasks, such as alignment, without running the entire pipeline. Making SNAPPy extremely useful for performing HIV-1 alignments.
 To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated::
 
-    conda actiavte snappy
+    conda activate snappy
 
 We highly encourage to run the tests before using the pipeline just to make sure the tasks will run as intended and the pipeline was not modified or damaged::
 
@@ -233,7 +235,7 @@ That's it for this tutorial! Don't forget that if you plan on using SNAPPy for s
 
 In this tutorial we will give a more in-depth look at the outputs created by SNAPPy in the subtyping process. This tutorial starts after Tuturial :ref:`tut1`, and uses the outputs created in that tutorial. If you have not run Tutorial 1 yet or no longer have its outputs in the folder please do so before the next steps.
 
-
+To use SNAPPy the terminal always needs to be executed from the snappy folder on your machine!
 
 1)
 Look at the content of the snappy folder::

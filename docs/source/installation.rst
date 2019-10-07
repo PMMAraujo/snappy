@@ -23,7 +23,7 @@ Do not use this method if you already have conda installed on your computer.
 
 3) Give permission to the snappy installation script to run, and run it::
 
-    chmod +x snappy_installer_x86_64.sh 
+    chmod +x linux_snappy_installer_x86_64.sh 
     ./linux_snappy_installer_x86_64.sh
 
 This task is time consuming and may take several minutes.
@@ -56,7 +56,7 @@ Do not use this method if you already have conda installed on your computer.
 
 3) Give permission to the snappy installation script to run, and run it::
 
-    chmod +x snappy_installer_x86_64.sh 
+    chmod +x macos_snappy_installer_x86_64.sh 
     ./macos_snappy_installer_x86_64.sh
 
 This task is time consuming and may take several minutes.

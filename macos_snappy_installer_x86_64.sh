@@ -16,6 +16,9 @@ source ~/miniconda/etc/profile.d/conda.sh
 # initiate conda and add the path to bash
 conda init
 
+# a warning to not close the terminal
+echo "SNAPPy IS STILL INSTALLING PLEASE DO NOT CLOSE THE TERMINAL!"
+
 # create snappy environment
 conda env create -f environment.yaml
 
