@@ -7,7 +7,7 @@ This pipeline was build upon many dependencies and `Python <http://www.python.or
 
  .. _quick_l:
 
-Quick install Guide - Linux and Windows 10 ( With Windows subsystem for Linux)
+Quick install Guide - Linux and Windows 10 (`With Windows subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This instalation was tested on Ubuntu 16 and 18 LTS as well as Windows 10 With ubuntu 18 terminal.
@@ -73,7 +73,7 @@ For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
 
  .. _point-by-point_l:
 
-Install point-by-point - Linux and Windows 10 ( With Windows subsystem for Linux)
+Install point-by-point - Linux and Windows 10 (`With Windows subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
