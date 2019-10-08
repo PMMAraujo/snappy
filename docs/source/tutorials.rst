@@ -5,6 +5,7 @@ Tutorials
 
 Please ensure SNAPPy's installation was successful. If you need help regarding SNAPPy's installation please visit the :ref:`installation` section. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated::
 
+    cd snappy
     conda activate snappy
  
 If the tool is stopping abruptly or behaving unexpectedly ensure it is functional by simply running the tests::
