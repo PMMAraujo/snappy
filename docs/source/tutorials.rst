@@ -22,6 +22,7 @@ Disclaimer: This tutorial and Tutorial :ref:`tut2` share the first four steps.
 
 HIV-1 subtyping is the main reason SNAPPY was build. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated::
 
+    cd snappy
     conda activate snappy
 
 We highly encourage to run the tests before using the pipeline just to make sure the tasks will run as intended and the pipeline was not modified or damaged::
@@ -65,7 +66,7 @@ Expected result::
 As you can see the genomic region selected for the SNAPPy's analysis is 'GAG-POL-ENV' which basically consists the HIV-1 regions named GAG, POL, and ENV concatenated (according to `HXB2 (K03455) <https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455>`_ reference genome). To use SNAPPy for subtyping the selected genomic region in the 'config.yaml' file always needs to be 'GAG-POL-ENV'. If for any reason you have changed it (for instance during Tutorial :ref:`tut2`) change it back.
 
 6)
-In order to subtype using SNAPPy simple type::
+In order to subtype using SNAPPy simply type::
 
     snakemake subtype_all
 
@@ -133,6 +134,7 @@ To use SNAPPy the terminal always needs to be executed from the snappy folder on
 Althought SNAPPy was built for HIV-1 subtyping one of its intermediary tasks is alignment to the reference genome (`HXB2 (K03455) <https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455>`_). Since SNAPPy is built based on `Snakemake <https://snakemake.readthedocs.io/en/stable/index.html>`_ we can call intermediary tasks, such as alignment, without running the entire pipeline. Making SNAPPy extremely useful for performing HIV-1 alignments.
 To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated::
 
+    cd snappy
     conda activate snappy
 
 We highly encourage to run the tests before using the pipeline just to make sure the tasks will run as intended and the pipeline was not modified or damaged::
@@ -176,7 +178,7 @@ Expected result::
 As you can see the genomic region selected for the SNAPPy's analysis is 'GAG-POL-ENV' which basically consists in the HIV-1 regions named GAG, POL, and ENV concatenated ( according to the `HXB2 (K03455) <https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455>`_ reference genome). Further on this tutorial we will use different genomic regions.
 
 6)
-In order to perform the alignment of the sequences in the folder 'input' for the region specified in 'config.yaml' simple type::
+In order to perform the alignment of the sequences in the folder 'input' for the region specified in 'config.yaml' simply type::
 
     snakemake align_all
 
@@ -234,8 +236,6 @@ That's it for this tutorial! Don't forget that if you plan on using SNAPPy for s
 ^^^^^^^^^^^^^^^^^^^
 
 In this tutorial we will give a more in-depth look at the outputs created by SNAPPy in the subtyping process. This tutorial starts after Tuturial :ref:`tut1`, and uses the outputs created in that tutorial. If you have not run Tutorial 1 yet or no longer have its outputs in the folder please do so before the next steps.
-
-To use SNAPPy the terminal always needs to be executed from the snappy folder on your machine!
 
 1)
 Look at the content of the snappy folder::

@@ -37,6 +37,7 @@ This task is time consuming and may take several minutes.
  
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
+Note: In certain systems you may need to give premission to new files you insert inside the SNAPPy folder, for instance new sequences to subtype. (chmod +x input/new_seqeunces.fasta)
 
  .. _quick_m:
 
@@ -70,6 +71,7 @@ This task is time consuming and may take several minutes.
  
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
+Note: In certain systems you may need to give premission to new files you insert inside the SNAPPy folder, for instance new sequences to subtype. (chmod +x input/new_seqeunces.fasta)
 
  .. _point-by-point_l:
 
@@ -119,6 +121,7 @@ Note: It is not actually needed to add conda path to the bash path but it makes 
     conda activate snappy
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
+Note: In certain systems you may need to give premission to new files you insert inside the SNAPPy folder, for instance new sequences to subtype. (chmod +x input/new_seqeunces.fasta)
 
  .. _point-by-point_m:
 
@@ -167,3 +170,4 @@ Note: It is not actually needed to add conda path to the bash path but it makes 
     conda activate snappy
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
+Note: In certain systems you may need to give premission to new files you insert inside the SNAPPy folder, for instance new sequences to subtype. (chmod +x input/new_seqeunces.fasta)
