@@ -8,7 +8,7 @@ This pipeline was build upon many dependencies and `Python <http://www.python.or
  .. _quick_l:
 
 Quick install Guide - Linux and Windows 10 (`With Windows subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This instalation was tested on Ubuntu 16 and 18 LTS as well as Windows 10 With ubuntu 18 terminal.
 Do not use this method if you already have conda installed on your computer.
@@ -76,7 +76,7 @@ Note: In certain systems you may need to give premission to new files you insert
  .. _point-by-point_l:
 
 Install point-by-point - Linux and Windows 10 (`With Windows subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 This instalation was tested on Ubuntu 16 and 18 LTS as well as Windows 10 With ubuntu 18 terminal.
@@ -122,6 +122,8 @@ Note: It is not actually needed to add conda path to the bash path but it makes 
 
 For a quick start on SNAPPy's usage look at the :ref:`tutorials` section.
 Note: In certain systems you may need to give premission to new files you insert inside the SNAPPy folder, for instance new sequences to subtype (chmod +x input/new_seqeunces.fasta).
+
+
 
  .. _point-by-point_m:
 
