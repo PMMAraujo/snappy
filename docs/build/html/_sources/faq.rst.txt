@@ -10,7 +10,7 @@ A: Do you want to do HIV-1 subtyping/alignment in large numbers? Do you have to 
 
 **Q: "Can SNAPPy run on a windows machine?**
 
-A: In theory it is possible to run SNAPPy on a windows machine using the `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_ , however at the moment we do not provide any support for this and if you decide to do so do it at your own risk. The main reason SNAPPy was build for Linux based systems is that it has dependencies that only work on these operating systems. We are considering options to make SNAPPy operative systems agnostic in future releases.
+A: We tested SNAPPy in windows 10 using the `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_ . It should permor as well as in a native UNIX based machine.
 
 
 **Q: "Is there any graphical user interface to use SNAPPy?**
@@ -20,10 +20,6 @@ A: Currently, SNAPPy is a command base tool. However, we are trying to implement
 **Q: "Why using BLAST in SNAPPy?**
 
 A: We decided to use BLAST for the first version of SNAPPy because it is reliable, extensively tested and easy to implement. We are aware of more "modern" BLAST-like tools, but one needs to recognize that BLAST has decades of being "battle tested". This decision does not restrict the usage of other tools/software in future versions of SNAPPy. 
-
-**Q: "Why using FastTree in SNAPPy?**
-
-A: After testing several phylogenetic tools we acknowledged that FasTree had the best ratio between phylogenetic inference quality and computational time. Moreover, FastTree has all the characteristics needed for the phylogenetic inference software for this version of SNAPPy. This decision does not restrict the usage of other tools/software in future versions of SNAPPy. 
 
 **Q: "I used SNAPPy to subtype 100k sequences and the outputs are occupying a lot of disk space (several dozens gigabytes), is it normal?**
 

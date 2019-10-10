@@ -35,7 +35,8 @@
   <div class="section" id="tutorials">
 <span id="id1"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
 <p>Please ensure SNAPPy’s installation was successful. If you need help regarding SNAPPy’s installation please visit the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> section. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">actiavte</span> <span class="n">snappy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">snappy</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">snappy</span>
 </pre></div>
 </div>
 <p>If the tool is stopping abruptly or behaving unexpectedly ensure it is functional by simply running the tests:</p>
@@ -49,7 +50,8 @@
 <span id="tut1"></span><h2>1: Subtyping with SNAPPy<a class="headerlink" href="#subtyping-with-snappy" title="Permalink to this headline">¶</a></h2>
 <p>Disclaimer: This tutorial and Tutorial <a class="reference internal" href="#tut2"><span class="std std-ref">2: Alignments with SNAPPy</span></a> share the first four steps.</p>
 <p>HIV-1 subtyping is the main reason SNAPPY was build. To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">actiavte</span> <span class="n">snappy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">snappy</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">snappy</span>
 </pre></div>
 </div>
 <p>We highly encourage to run the tests before using the pipeline just to make sure the tasks will run as intended and the pipeline was not modified or damaged:</p>
@@ -89,7 +91,7 @@ Now lets look at the ‘config.yaml’ file:</p>
 <p>5)
 As you can see the genomic region selected for the SNAPPy’s analysis is ‘GAG-POL-ENV’ which basically consists the HIV-1 regions named GAG, POL, and ENV concatenated (according to <a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a> reference genome). To use SNAPPy for subtyping the selected genomic region in the ‘config.yaml’ file always needs to be ‘GAG-POL-ENV’. If for any reason you have changed it (for instance during Tutorial <a class="reference internal" href="#tut2"><span class="std std-ref">2: Alignments with SNAPPy</span></a>) change it back.</p>
 <p>6)
-In order to subtype using SNAPPy simple type:</p>
+In order to subtype using SNAPPy simply type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">subtype_all</span>
 </pre></div>
 </div>
@@ -143,9 +145,11 @@ That’s it for this tutorial! If you now want to use SNAPPy on your own date do
 <div class="section" id="alignments-with-snappy">
 <span id="tut2"></span><h2>2: Alignments with SNAPPy<a class="headerlink" href="#alignments-with-snappy" title="Permalink to this headline">¶</a></h2>
 <p>Disclaimer: This tutorial and Tutorial <a class="reference internal" href="#tut1"><span class="std std-ref">1: Subtyping with SNAPPy</span></a> share the first four steps.</p>
+<p>To use SNAPPy the terminal always needs to be executed from the snappy folder on your machine!</p>
 <p>Althought SNAPPy was built for HIV-1 subtyping one of its intermediary tasks is alignment to the reference genome (<a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a>). Since SNAPPy is built based on <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/index.html">Snakemake</a> we can call intermediary tasks, such as alignment, without running the entire pipeline. Making SNAPPy extremely useful for performing HIV-1 alignments.
 To use SNAPPy the terminal always needs to be executed from the snappy folder, and the conda environment activated:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">actiavte</span> <span class="n">snappy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">snappy</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">snappy</span>
 </pre></div>
 </div>
 <p>We highly encourage to run the tests before using the pipeline just to make sure the tasks will run as intended and the pipeline was not modified or damaged:</p>
@@ -185,7 +189,7 @@ Now lets look at the ‘config.yaml’ file:</p>
 <p>5)
 As you can see the genomic region selected for the SNAPPy’s analysis is ‘GAG-POL-ENV’ which basically consists in the HIV-1 regions named GAG, POL, and ENV concatenated ( according to the <a class="reference external" href="https://www.hiv.lanl.gov/components/sequence/HIV/asearch/query_one.comp?se_id=K03455">HXB2 (K03455)</a> reference genome). Further on this tutorial we will use different genomic regions.</p>
 <p>6)
-In order to perform the alignment of the sequences in the folder ‘input’ for the region specified in ‘config.yaml’ simple type:</p>
+In order to perform the alignment of the sequences in the folder ‘input’ for the region specified in ‘config.yaml’ simply type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snakemake</span> <span class="n">align_all</span>
 </pre></div>
 </div>
@@ -294,15 +298,11 @@ After this tutorial we believe that you are equipped with the knowledge to use S
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subtyping-with-snappy">1: Subtyping with SNAPPy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#alignments-with-snappy">2: Alignments with SNAPPy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#result-analysis">3: Result Analysis</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">SNAPPy commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how_it_works.html">How it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">How to Cite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 

@@ -14,7 +14,7 @@ If the tool is stopping abruptly or behaving unexpectedly ensure it is functiona
 
 To run the tests the conda snappy environment needs to be active. If the tests result in error it is advised to reinstall the tool.
 
- .. _tut1:
+.. _tut1:
 
 1: Subtyping with SNAPPy
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,7 +123,7 @@ As you probably noticed this time the same process took a lot less time to run, 
 16)
 That's it for this tutorial! If you now want to use SNAPPy on your own date don't forget to clean the outputs created during this tutorial and adjust the content of the input folder.
 
- .. _tut2:
+.. _tut2:
 
 2: Alignments with SNAPPy
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -231,7 +231,7 @@ Fell free to test SNAPPy to create MSA for other HIV-1 sequences or using other 
 15)
 That's it for this tutorial! Don't forget that if you plan on using SNAPPy for subtyping the 'config.yaml' file always needs to indicate the option 'GAG-POL-ENV'.
 
- .. _tut3:
+.. _tut3:
 
 3: Result Analysis
 ^^^^^^^^^^^^^^^^^^^

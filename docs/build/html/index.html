@@ -33,35 +33,49 @@
             
   <div class="section" id="welcome-to-snappy-s-documentation">
 <h1>Welcome to snappy’s documentation!<a class="headerlink" href="#welcome-to-snappy-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-snappy">
-<h2>What is SNAPPy<a class="headerlink" href="#what-is-snappy" title="Permalink to this headline">¶</a></h2>
-<p>SNAPPy is a Snakemake pipeline for HIV-1 subtyping by phylogenetic pairing. It was build to allow locaal high-throughput HIV-1 subtyping while being resource efficient and scalable. This pipeline was constructed using <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/index.html">Snakemake</a> , and it uses <a class="reference external" href="https://mafft.cbrc.jp/alignment/software/">MAFFT</a> for multiple sequence alignments, <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs">BLAST</a> for similarirty queries, <a class="reference external" href="http://www.microbesonline.org/fasttree/">FastTree</a> for phylogenetic inference, and several <a class="reference external" href="https://biopython.org/">Biopython</a> modules for data parsing an analysis. For in-depth information on how the tool works please visit the <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a> section. SNAPPy was design for Linux based operative systems.</p>
-</div>
-<div class="section" id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p><strong>Installation:</strong></p>
-<p><a class="reference internal" href="installation.html#quick"><span class="std std-ref">Quick install Guide</span></a></p>
-<p><a class="reference internal" href="installation.html#point-by-point"><span class="std std-ref">Install point-by-point</span></a></p>
-<p><strong>Tutorials:</strong></p>
-<p><a class="reference internal" href="tutorials.html#tut1"><span class="std std-ref">1: Subtyping with SNAPPy</span></a></p>
-<p><a class="reference internal" href="tutorials.html#tut2"><span class="std std-ref">2: Alignments with SNAPPy</span></a></p>
-<p><a class="reference internal" href="tutorials.html#tut3"><span class="std std-ref">3: Result Analysis</span></a></p>
-<p><strong>Commands list:</strong></p>
-<p><a class="reference internal" href="usage.html#usage"><span class="std std-ref">SNAPPy commands</span></a></p>
-</div>
-<div class="section" id="support">
-<h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<p>SNAPPy’s code can be found <a class="reference external" href="https://github.com/PMMAraujo/snappy">here</a></p>
+<p><strong>What is SNAPPy</strong></p>
+<p>SNAPPy is a Snakemake pipeline for HIV-1 subtyping by phylogenetic pairing. It was build to allow locaal high-throughput HIV-1 subtyping while being resource efficient and scalable. This pipeline was constructed using <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/index.html">Snakemake</a> , and it uses <a class="reference external" href="https://mafft.cbrc.jp/alignment/software/">MAFFT</a> for multiple sequence alignments, <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs">BLAST</a> for similarirty queries, <a class="reference external" href="http://www.iqtree.org/">IQ-TREE</a> for phylogenetic inference, and several <a class="reference external" href="https://biopython.org/">Biopython</a> modules and the <a class="reference external" href="http://etetoolkit.org/">ETE toolkit</a> for data parsing an analysis. For in-depth information on how the tool works please visit the <a class="reference internal" href="how_it_works.html#how-it-works"><span class="std std-ref">How it works</span></a> section. SNAPPy can be used in Linux based distributions (tested on Ubuntu 16 and 18), macOS 10 (tested of Mojave 10.14), and Windows 10 using Windows Subsystem for Linux (tested with Ubuntu 18 bash).</p>
+<p><strong>Getting Started</strong></p>
+<ul>
+<li><p>Installation:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="installation.html#quick-l"><span class="std std-ref">Quick install Guide - Linux and Windows 10 (With Windows subsystem for Linux)</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#quick-m"><span class="std std-ref">Quick install Guide - macOS 10</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#point-by-point-l"><span class="std std-ref">Install point-by-point - Linux and Windows 10 (With Windows subsystem for Linux)</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#point-by-point-m"><span class="std std-ref">Install point-by-point - macOS 10</span></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Tutorials:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="tutorials.html#tut1"><span class="std std-ref">1: Subtyping with SNAPPy</span></a></p></li>
+<li><p><a class="reference internal" href="tutorials.html#tut2"><span class="std std-ref">2: Alignments with SNAPPy</span></a></p></li>
+<li><p><a class="reference internal" href="tutorials.html#tut3"><span class="std std-ref">3: Result Analysis</span></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Commands list:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="usage.html#usage"><span class="std std-ref">SNAPPy commands</span></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Support</strong></p>
+<blockquote>
+<div><ul class="simple">
 <li><p>The software is provided “as is”, without warranty of any kind, we do our best to keep it updated and bug free</p></li>
 <li><p><a class="reference internal" href="faq.html#faq"><span class="std std-ref">FAQ</span></a></p></li>
 <li><p>For additional information please contact: INFO (MAIL)</p></li>
 </ul>
-</div>
-<div class="section" id="citation">
-<h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
+</div></blockquote>
+<p><strong>How to Cite</strong></p>
 <p>text</p>
 <div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 
@@ -86,8 +100,9 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">SNAPPy commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how_it_works.html">How it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">How to Cite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
