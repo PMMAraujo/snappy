@@ -11,3 +11,8 @@ In the documentation page you can find a [Quick install Guide](https://snappy-hi
 ## How to use
 
 SNAPPy usage is demonstrated in the documentations in SNAPPy commands, furthermnore the [Tutorials](https://snappy-hiv1-subtyping.readthedocs.io/en/latest/tutorials.html) section coins example on how to use SNAPPy.
+
+## How to cite
+
+Pedro M M Araújo, Joana S Martins, Nuno S Osório, SNAPPy: A snakemake pipeline for scalable HIV-1 subtyping by phylogenetic pairing, Virus Evolution, Volume 5, Issue 2, July 2019, vez050, https://doi.org/10.1093/ve/vez050
+
